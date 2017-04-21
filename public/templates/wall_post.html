@@ -1,0 +1,1627 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-if="currentUser.person_type !== 'Alumni'">
+    <h1>Post Manager</h1>
+</section>
+<section class="content">
+    <!-- <div style="width:730px;margin: 0px auto;"> -->
+    <div class="row">
+        <!-- side profile para ra sa alumni ni lucky boy-->
+        <div class="wrapper-page1">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-4" ng-if="currentUser.person_type == 'Alumni'">
+                        <div class="col-sm-12">
+                            <figure class="snip1344">
+                            <img ngf-src="user.image_path || './public/assets/images/users/avatar.png'" alt="profile-sample1" class="background" />
+                            <img ngf-src="user.image_path || './public/assets/images/users/avatar.png'" alt="profile-sample1" class="profile" />
+                                <figcaption>
+                                    <h3>{{user.firstname}} {{user.lastname}}</h3>
+                                    <span style="color: #f39c12"><i>{{user.account_course.name}}</i></span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="nav-tabs-custom col-sm-12">
+                                    <div class="col-sm-6 text-left">
+                                        <div class="about-info-p"> <span class="text-inverse"><strong>Birth Date:</strong></span>
+                                            <br><span class="text-muted">{{user.birth_date | date: 'longDate'}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="about-info-p"><span class="text-inverse"><strong>Civil Status:</strong></span>
+                                            <br><span class="text-muted">{{user.civil}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="nav-tabs-custom col-sm-12">
+                                    <div class="col-sm-6 text-left">
+                                        <div class="about-info-p"> <span class="text-inverse"><strong>Nationality:</strong></span>
+                                            <br><span class="text-muted">{{user.nationality}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="about-info-p"><span class="text-inverse"><strong>Mobile Number:</strong></span>
+                                            <br><span class="text-muted">{{user.contactnum}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="nav-tabs-custom col-sm-12">
+                                    <div class="col-sm-6 text-left">
+                                        <div class="about-info-p"> <span class="text-inverse"><strong>Email Address:</strong></span>
+                                            <br><span class="text-muted">{{user.email_address}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="about-info-p"><span class="text-inverse"><strong>Home Address:</strong></span>
+                                            <br><span class="text-muted">{{user.address}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="">
+                        <div class="col-sm-12">
+                            <ul class="nav-tabs-custom" bs-tabs>
+                                <li data-title="About me" bs-pane>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <div class="about-info-p"> <span class="text-inverse"><strong>Birth Date:</strong></span>
+                                                <br><span class="text-muted">{{user.birth_date | date: 'longDate'}}</span></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Civil Status:</strong></span>
+                                                <br><span class="text-muted">{{user.civil}}</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Nationality:</strong></span>
+                                                <br><span class="text-muted">{{user.nationality}}</span></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Mobile Number:</strong></span>
+                                                <br><span class="text-muted">{{user.contactnum}}</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Email Address:</strong></span>
+                                                <br><span class="text-muted">{{user.email_address}}</span></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Home Address:</strong></span>
+                                                <br><span class="text-muted">{{user.address}}</span></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-title="Job Details" bs-pane>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Job Status:</strong></span>
+                                                <br><span class="text-muted">Employed</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Job Title:</strong></span>
+                                                <br><span class="text-muted">IT Helpdesk/IT Annalyst</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Company Name:</strong></span>
+                                                <br><span class="text-muted">World Vision International</span></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Company Address:</strong></span>
+                                                <br><span class="text-muted">Quezon City, Philippines</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><span class="text-inverse"><strong>Company Website:</strong></span>
+                                                <br><span class="text-muted"><a href="http://www.facebook.com" target="_blank">World Vision International</a></span></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="about-info-p"><a class="btn btn-info waves-effect waves-light" href="javascript:void(0)" data-toggle="modal" data-target="#jobHistoryModal"><i class="fa fa-newspaper-o"></i> Job History</a></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <div class="indicator"></div>
+                        </div>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+                    <!-- <div class="col-sm-5" ng-if="currentUser.person_type == 'Alumni'">
+                        <div class="panel panel-inverse panel-color" >
+                            <div class="panel-heading">
+                                <div class="profile-info-name text-center">
+                                    <img src="{{user.image_path}}" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
+                                    <h3 class="text-white">{{user.firstname}} {{user.lastname}}</h3>
+                                    <h6 class="text-white"><i>{{user.account_course.name}}</i></h6>
+                                    <h6 class="text-white">{{user.batch_name}}</h6>
+                                </div>
+                                <div class="user-tabs">
+                                    <div class="col-sm-12">
+                                        <ul class="nav-tabs-custom" bs-tabs>
+                                            <li data-title="About me" bs-pane>
+                                                <div class="row">
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="about-info-p"> <span class="text-inverse"><strong>Birth Date:</strong></span>
+                                                            <br><span class="text-muted">{{user.birth_date | date: 'longDate'}}</span></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Civil Status:</strong></span>
+                                                            <br><span class="text-muted">{{user.civil}}</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Nationality:</strong></span>
+                                                            <br><span class="text-muted">{{user.nationality}}</span></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Mobile Number:</strong></span>
+                                                            <br><span class="text-muted">{{user.contactnum}}</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Email Address:</strong></span>
+                                                            <br><span class="text-muted">{{user.email_address}}</span></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Home Address:</strong></span>
+                                                            <br><span class="text-muted">{{user.address}}</span></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li data-title="Job Details" bs-pane>
+                                                <div class="row">
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Job Status:</strong></span>
+                                                            <br><span class="text-muted">Employed</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Job Title:</strong></span>
+                                                            <br><span class="text-muted">IT Helpdesk/IT Annalyst</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Company Name:</strong></span>
+                                                            <br><span class="text-muted">World Vision International</span></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Company Address:</strong></span>
+                                                            <br><span class="text-muted">Quezon City, Philippines</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><span class="text-inverse"><strong>Company Website:</strong></span>
+                                                            <br><span class="text-muted"><a href="http://www.facebook.com" target="_blank">World Vision International</a></span></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="about-info-p"><a class="btn btn-info waves-effect waves-light" href="javascript:void(0)" data-toggle="modal" data-target="#jobHistoryModal"><i class="fa fa-newspaper-o"></i> Job History</a></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <div class="indicator"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> -->
+                    <div ng-class="{'col-sm-7': currentUser.person_type == 'Alumni','col-sm-5':currentUser.person_type == 'Admin'}">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-header" data-background-color="inverse">
+                                    <h4 class="title">Post Something</h4>
+                                </div>
+                                <div class="card-content">
+                                    <form>
+                                        <div class="col-sm-6">
+                                            <label for="sbjct1">Title of Post</label>
+                                            <div class="form-group">
+                                                <input type="text" ng-model="details.subject" class="form-control" placeholder="Subject" required>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-sm-12"> -->
+                                        <!-- <div class="form-group"> -->
+                                        <!-- <input class="ng-hide" type="file" id="input-file-id" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image_path" ngf-max-size="8MB" ngf-select="upload($files)" /> -->
+                                        <!-- <label  for="input-file-id" class="md-button md-raised md-primary">Select Image</label> -->
+                                        <!-- </div> -->
+                                        <!--  <div class="btn-group">
+                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image_path" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                        </div> -->
+                                        <!-- </div> -->
+                                        <div class="col-sm-12">
+                                            <div class="form-group text-center">
+                                                <img ngf-src="details.image_path||image_new " width="150px" height="150px">
+                                                <div class="input-group image-preview">
+                                                    <input class="ng-hide" id="input-file-id" type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" ng-model="details.image_path" ngf-max-size="8MB" ngf-select="upload($files)" />
+                                                    <label for="input-file-id" class="md-button md-raised md-primary1 btn btn-primary waves-effect waves-light">Select Image</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6" ng-if="currentUser.person_type == 'Admin'">
+                                            <div class="form-group">
+                                                <label for="categorP1">Category Post</label>
+                                                <select class="form-control" id="categorP1" name="categorP" ng-model="selectedcat" ng-change="getCategory(selectedcat)" required>
+                                                    <option value="" ng-disabled="true">Select Category</option>
+                                                    <option value="Event">Event</option>
+                                                    <option value="Job Hiring">Job Hiring</option>
+                                                    <option value="News">News</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6" ng-if="currentUser.person_type == 'Alumni'">
+                                            <div class="form-group">
+                                                <label for="categorP1">Category Post</label>
+                                                <select class="form-control" id="categorP1" name="categorP" ng-model="selectedcat" ng-change="getCategory(selectedcat)" required>
+                                                    <option value="" ng-disabled="true">Select Category</option>
+                                                    <option value="Job Hiring">Job Hiring</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div ng-if="event">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="eventDate1">Event Date</label>
+                                                    <div class="input-group">
+                                                        <input class="form-control" placeholder="MM/DD/YYYY" type="text" parsley-trigger="change" id="eventDate1" name="eventDate" required="" ng-model="details.event_date" bs-datepicker>
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="eventTime">Event Time Start</label>
+                                                    <div class="input-group">
+                                                        <div class="bootstrap-timepicker">
+                                                            <input id="eventStart" type="text" size="10" ng-model="details.event_start" data-arrow-behavior="picker" bs-timepicker class="form-control" required="">
+                                                        </div>
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="eventTime">Event Time End</label>
+                                                    <div class="input-group">
+                                                        <div class="bootstrap-timepicker">
+                                                            <input id="eventEnd" size="10" data-minute-step="1" ng-model="details.event_end" bs-timepicker data-minute-step="1" data-arrow-behavior="picker" type="text" class="form-control" required="">
+                                                        </div>
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="hiring">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>For Student OJT <small>(Optional)</small></label>
+                                                    <div class="checkbox checkbox-primary" ng-repeat="job in ojtbol" ng-click="itemcheck(job)">
+                                                        <input id="checkbox1" type="checkbox" ng-model="job.checked">
+                                                        <label for="checkbox1">
+                                                            {{job.status}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <!--  <label ng-repeat="job in ojtbol">
+                                            <input type="checkbox" ng-model="job.checked" ng-click="itemcheck(job)">{{job.status}}
+                                        </label> -->
+                                            </div>
+                                            <!-- <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label >Job Course Related</label>
+                                                    <select class="form-control"  ng-model="details.jobcourse_related" ng-options="item.course_id as item.name for item in coursecopy" >
+                                                        <option value="" ng-disabled="true">Select Course Related</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <textarea class=" form-control" id="contentPost1" name="contentPost" ng-model="details.post" placeholder="Message body" style="height: 100px" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group text-right m-b-0">
+                                                <button class="md-button md-raised md-primary btn btn-primary waves-effect waves-light" type="button" ng-click="post()">
+                                                    <i class="fa fa-send"></i> Post
+                                                </button>
+                                                <button type="reset" class="md-button md-raised btn btn-danger waves-effect waves-light m-l-5">
+                                                    <i class="fa fa-refresh fa-spin"></i> Reset
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7" ng-show="currentUser.person_type !== 'Alumni'">
+                        <div class="card" style="min-height: 423px;">
+                            <div class="card-header" data-background-color="inverse">
+                                <h4 class="title">List of Post</h4>
+                            </div>
+                            <!-- <div class="card-content"> -->
+                            <div class="card-content table-responsive ">
+                                <div class="pull-right">
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-sm-6 text-xs-center">
+                                                        <div class="form-group">
+                                                            <label class="control-label m-r-5">Filter Post by: </label>
+                                                            <select id="demo-foo-filter-status" ng-model="filtervalue" class="form-control input-sm" ng-change="filterList(filtervalue)">
+                                                                <option value="All">All</option>
+                                                                <option value="Job Hiring">Job Hiring</option>
+                                                                <option value="News">News</option>
+                                                                <option value="Event">Event</option>
+                                                                <option value="Others">Others</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                                        </div>
+                                                        <!--    <span class="input-group-btn">
+                                                <button class="btn btn-sm btn-flat btn-warning dropdown-toggle" data-toggle="dropdown">{{applicationStatus}}<span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a ng-click="updateStatus('All')">All</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Employeed')">Employeed</a>
+                                                </li>
+                                                <li><a ng-click="updateStatus('Unemployeed')">Unemployeed</a>
+                                                </li>
+                                            </ul>
+                                            </span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <table class="table table-hover table-condensed" ng-table="postTable">
+                                    <tr ng-repeat="post in $data" class="text-center">
+                                        <td class="" data-title="'Post ID'">
+                                            {{post.wall_id}}
+                                        </td>
+                                        <td class="" data-title="'User Name'">
+                                            {{post.alumni.firstname || 'Admin'}}
+                                        </td>
+                                        <td class="" data-title="'Post Category'">
+                                            {{post.category || 'None'}}
+                                        </td>
+                                        <td class="" data-title="'Post Status'">
+                                            <span ng-if="post.approved == 1" class="label label-success">Approved</span>
+                                            <span ng-if="post.approved == 0" class="label label-warning">Pending</span>
+                                        </td>
+                                        <td class="text-center" data-title="'Action'">
+                                            <button class="btn btn-info btn-xs btn-flat" ng-click="viewPost(post.wall_id)"><i class="glyphicon glyphicon-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper-page1">
+            <div class="card">
+                <div class="card-header" data-background-color="inverse">
+                    <h4 class="title">Recent Post</h4>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <!-- <div class="col-sm-12">
+                            <label><strong>Filter Post by Batch: </strong></label>
+                            <div class=" checkbox-inline">
+                                <select class="form-control input-sm" ng-model="selected.value" ng-options="item.year_graduated as (item.name +' ' + '(' + item.year_graduated + ')') for item in batches" ng-change="getBatch(selected)">
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label><strong>Filter Post by Category: </strong></label>
+                                <div class="checkbox">
+                                    <label ng-repeat="category in categorypost">
+                                        <input type="checkbox" ng-model="category.checked" ng-click="getCategorypost(category)"> {{category.name}} </label>
+                                    
+                                </div>
+                                <!-- <div class="checkbox checkbox-circle checkbox-danger checkbox-inline" ng-click="getCategorypost('Event')">
+                                    <input type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                    <label for="inlineCheckbox1">Event</label>
+                                </div> -->
+                                <!-- <div class="checkbox checkbox-circle checkbox-pink checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox3" value="option1">
+                                    <label for="inlineCheckbox3">Job Hiring</label>
+                                </div>
+                                <div class="checkbox checkbox-circle checkbox-pink checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox3" value="option1">
+                                    <label for="inlineCheckbox3">News</label>
+                                </div>
+                                <div class="checkbox checkbox-circle checkbox-pink checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox3" value="option1">
+                                    <label for="inlineCheckbox3">Others</label>
+                                </div>
+                                <div class="checkbox checkbox-circle checkbox-pink checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox3" value="option1">
+                                    <label for="inlineCheckbox3">All of me</label>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-2">
+                        <div class="time-item" ng-repeat="post in allpostcopy" ng-if="post.approved == 1">
+                            <div class="row">
+                                <div class="item-info">
+                                    <div class="col-sm-12">
+                                        <div class="inbox-widget">
+                                            <a ui-sref="main.profile({id:post.account_id})" ng-if="post.alumni">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img"><img ngf-src="post.alumni.image_path || './public/assets/images/IC-logo.png'" class="img-circle" alt=""></div>
+                                                    <p class="inbox-item-author">{{post.alumni.firstname || 'Admin'}}{{post.alumni.lastname}}</p>
+                                                    <p class="inbox-item-text">{{post.alumni.course.name ||'Admin'}}</p>
+                                                    <p class="inbox-item-text">{{post.date_created | date:'shortTime'}}</p>
+                                                </div>
+                                            </a>
+                                            <a ng-if="!post.alumni">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img"><img ngf-src="post.alumni.image_path || './public/assets/images/IC-logo.png'" class="img-circle" alt=""></div>
+                                                    <p class="inbox-item-author">{{post.alumni.firstname || 'Admin'}}{{post.alumni.lastname}}</p>
+                                                    <p class="inbox-item-text">{{post.alumni.course.name ||'Admin'}}</p>
+                                                    <p class="inbox-item-text">{{post.date_created | date:'shortTime'}}</p>
+                                                    <!-- <p class="inbox-item-text">{{post.date_created | date:'shortTime'}}</p> -->
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="text-muted">3:15 PM</div> -->
+                                    <div class="text-inverse"><strong style="font-size: 18px; margin-left: 20px;">
+                            {{post.subject || 'None'}}</strong></div>
+                                    <div class="col-sm-4" ng-if="post.image_path">
+                                        <img src="{{post.image_path}}" class="thumbnail">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <blockquote>
+                                            <p>{{post.post}}</p>
+                                        </blockquote>
+                                        <div class="" ng-if="post.category == 'Event'">
+                                            <span><strong>Event Date: {{post.event_date | date:'longDate'}} </strong><i><!-- diri ibutang ang date sa event  --></i></span>
+                                            <br>
+                                            <span><strong>Start: {{post.event_start}}</strong><i><!-- diri ibutang ang date sa event  --></i></span>
+                                            <br>
+                                            <span><strong>End: {{post.event_end}}</strong><i><!-- diri ibutang ang date sa event  --></i></span>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-sm-12">
+                                        <div class="inbox-widget">
+                                            <a href="javascript:void(0)">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img"><img ngf-src="post.alumni.image_path || './public/assets/images/indak-logo.png'" class="img-circle" alt=""></div>
+                                                    <p class="inbox-item-author">{{post.alumni.firstname || 'Admin'}}{{post.alumni.lastname}}</p>
+                                                    <p class="inbox-item-text">{{post.alumni.course.name ||'Admin'}}</p>
+                                                    <p class="inbox-item-date">{{post.date_created | date:'shortTime'}}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-sm-12 text-left">
+                                        <span>Post Category: </span><span class="label label-danger">{{post.category || 'None' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <!--  <div class="time-item">
+                        <div class="item-info">
+                            <div class="text-muted">3:20 PM</div>
+                            <div class="text-inverse"><strong style="font-size: 18px;">Post Title 2</strong></div>
+                            <blockquote>
+                                <p>I am graduation. I am inviting you all to eat our house. HAHAHAHA ksks ksks ksks</p>
+                            </blockquote>
+                            <span>Post Category: </span><span class="label label-inverse">Others</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<style type="text/css">
+textarea {
+    resize: none;
+}
+
+.breadcrumb {
+    float: left;
+}
+
+.pagination {
+    margin-left: 190px !important;
+}
+
+.panel {
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.panel .panel-body {
+    padding: 20px;
+}
+
+.panel .panel-body p {
+    margin: 0px;
+}
+
+.panel .panel-body p + p {
+    margin-top: 15px;
+}
+
+.panel-heading {
+    border-radius: 0;
+    border: none !important;
+    padding: 10px 20px;
+}
+
+.panel-default > .panel-heading {
+    background-color: #fafafa;
+    border-bottom: none;
+    color: #797979;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.panel-footer {
+    background: #fafafa;
+    border-top: 0px;
+}
+
+.panel-color .panel-title {
+    color: #ffffff;
+}
+
+.panel-admin > .panel-heading {
+    background-color: #d64809;
+}
+
+.panel-admin > .panel-heading {
+    background-color: #d64809;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #6e8cd7;
+}
+
+.panel-success > .panel-heading {
+    background-color: #33b86c;
+}
+
+.panel-info > .panel-heading {
+    background-color: #29b6f6;
+}
+
+.panel-warning > .panel-heading {
+    background-color: #ffd740;
+}
+
+.panel-danger > .panel-heading {
+    background-color: #ef5350;
+}
+
+.panel-purple > .panel-heading {
+    background-color: #7e57c2;
+}
+
+.panel-pink > .panel-heading {
+    background-color: #ec407a;
+}
+
+.panel-inverse > .panel-heading {
+    background-color: #4c5667;
+}
+
+
+/* ==============
+  Checkbox and Radio
+===================*/
+
+/*.checkbox {
+    padding-left: 20px;
+}
+
+.checkbox label {
+    display: inline-block;
+    padding-left: 5px;
+    position: relative;
+}
+
+.checkbox label::before {
+    -o-transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    content: "";
+    display: inline-block;
+    height: 17px;
+    left: 0;
+    margin-left: -20px;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+    width: 17px;
+    outline: none !important;
+}
+
+.checkbox label::after {
+    color: #555555;
+    display: inline-block;
+    font-size: 11px;
+    height: 16px;
+    left: 0;
+    margin-left: -20px;
+    padding-left: 3px;
+    padding-top: 1px;
+    position: absolute;
+    top: 0;
+    width: 16px;
+}
+
+.checkbox input[type="checkbox"] {
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+    outline: none !important;
+}
+
+.checkbox input[type="checkbox"]:disabled + label {
+    opacity: 0.65;
+}
+
+.checkbox input[type="checkbox"]:focus + label::before {
+    outline-offset: -2px;
+    outline: none;
+}
+
+.checkbox input[type="checkbox"]:checked + label::after {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+}
+
+.checkbox input[type="checkbox"]:disabled + label::before {
+    background-color: #eeeeee;
+    cursor: not-allowed;
+}
+
+.checkbox.checkbox-circle label::before {
+    border-radius: 50%;
+}
+
+.checkbox.checkbox-inline {
+    margin-top: 0;
+}
+
+.checkbox.checkbox-single label {
+    height: 17px;
+}
+
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+    background-color: #6e8cd7;
+    border-color: #6e8cd7;
+}
+
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+    color: #ffffff;
+}
+
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+    background-color: #ef5350;
+    border-color: #ef5350;
+}
+
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+    color: #ffffff;
+}
+
+.checkbox-info input[type="checkbox"]:checked + label::before {
+    background-color: #29b6f6;
+    border-color: #29b6f6;
+}
+
+.checkbox-info input[type="checkbox"]:checked + label::after {
+    color: #ffffff;
+}
+
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+    background-color: #ffd740;
+    border-color: #ffd740;
+}
+
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+    color: #ffffff;
+}
+
+.checkbox-success input[type="checkbox"]:checked + label::before {
+    background-color: #33b86c;
+    border-color: #33b86c;
+}
+
+.checkbox-success input[type="checkbox"]:checked + label::after {
+    color: #ffffff;
+}*/
+
+
+/* ==============
+  Timeline-2
+===================*/
+
+.timeline-2 {
+    border-left: 2px solid #14082d;
+    position: relative;
+}
+
+.timeline-2 .time-item:after {
+    background-color: #ffffff;
+    border-color: #14082d;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    bottom: 0;
+    content: '';
+    height: 14px;
+    left: 0;
+    margin-left: -8px;
+    position: absolute;
+    top: 5px;
+    width: 14px;
+}
+
+.time-item {
+    border-color: #dee5e7;
+    padding-bottom: 1px;
+    position: relative;
+}
+
+.time-item:before {
+    content: " ";
+    display: table;
+}
+
+.time-item:after {
+    background-color: #ffffff;
+    border-color: #14082d;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    bottom: 0;
+    content: '';
+    height: 14px;
+    left: 0;
+    margin-left: -8px;
+    position: absolute;
+    top: 5px;
+    width: 14px;
+}
+
+.time-item-item:after {
+    content: " ";
+    display: table;
+}
+
+.item-info {
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+.item-info p {
+    margin-bottom: 10px !important;
+}
+
+
+/*for post contents*/
+
+.text-inverse {
+    color: #4c5667;
+}
+
+.thumb-img {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-inner>.item>a>img,
+.carousel-inner>.item>img,
+.img-responsive,
+.thumbnail a>img,
+.thumbnail>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+    /*max-height: 300px;*/
+}
+
+img {
+    border: 0;
+}
+
+* {
+    outline: none !important;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 15px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+* {
+    outline: none !important;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+blockquote {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    /*-webkit-margin-start: 40px;*/
+    -webkit-margin-end: 15px;
+}
+
+.label-primary {
+    background-color: #6e8cd7;
+}
+
+.label-success {
+    background-color: #33b86c;
+}
+
+.label-info {
+    background-color: #29b6f6;
+}
+
+.label-warning {
+    background-color: #ffd740;
+}
+
+.label-danger {
+    background-color: #ef5350;
+}
+
+.label-purple {
+    background-color: #7e57c2;
+}
+
+.label-pink {
+    background-color: #ec407a;
+}
+
+.label-inverse {
+    background-color: #4c5667;
+}
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.wrapper-page {
+    width: 77%;
+    margin: 0 auto;
+}
+
+.wrapper-page1 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.inbox-widget .inbox-item {
+    border-bottom: 1px solid #f1f1f1;
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+}
+
+.inbox-widget .inbox-item .inbox-item-img {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    width: 40px;
+}
+
+.inbox-widget .inbox-item .inbox-item-author {
+    color: #333333;
+    display: block;
+    margin: 0;
+}
+
+.inbox-widget .inbox-item .inbox-item-text {
+    color: #a0a0a0;
+    display: block;
+    font-size: 12px;
+    margin: 0;
+}
+
+.inbox-widget .inbox-item .inbox-item-date {
+    color: #a9a9a9;
+    font-size: 11px;
+    position: absolute;
+    right: 7px;
+    top: 2px;
+}
+
+* {
+    outline: none !important;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.profile-info-name {
+    position: relative;
+}
+
+.text-center {
+    text-align: center;
+}
+
+* {
+    outline: none !important;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+h3 {
+    line-height: 30px;
+}
+
+h6 {
+    color: #505458;
+    font-family: 'Roboto', sans-serif;
+    margin: 10px 0;
+}
+
+.user-tabs {
+    background-color: #ffffff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-left: 0;
+    margin-right: 0px;
+}
+
+* {
+    outline: none !important;
+}
+
+.user-tabs .nav.nav-tabs {
+    box-shadow: none !important;
+}
+
+.nav.nav-tabs {
+    border-bottom: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.tabs {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 0px;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.tabs li.tab {
+    background-color: #ffffff;
+    display: block;
+    float: left;
+    margin: 0;
+    text-align: center;
+}
+
+.nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.nav>li {
+    position: relative;
+    display: block;
+}
+
+.tabs {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 0px;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.tabs li.tab {
+    background-color: #ffffff;
+    display: block;
+    float: left;
+    margin: 0;
+    text-align: center;
+}
+
+.tabs li.tab a {
+    -moz-transition: color 0.28s ease;
+    -ms-transition: color 0.28s ease;
+    -o-transition: color 0.28s ease;
+    -webkit-transition: color 0.28s ease;
+    color: #ee6e73;
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    transition: color 0.28s ease;
+    width: 100%;
+}
+
+.tabs li.tab a.active {
+    color: #da4e09 !important;
+}
+
+.tabs .indicator {
+    background-color: #da4e09;
+    bottom: 0;
+    height: 2px;
+    position: absolute;
+    will-change: left, right;
+}
+
+.tabs-top .indicator {
+    top: 0;
+}
+
+.nav.nav-tabs + .tab-content {
+    background: #ffffff;
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+.tabs-vertical-env {
+    background-color: #eeeeee;
+    margin-bottom: 30px;
+}
+
+.tabs-vertical-env .tab-content {
+    background: #ffffff;
+    display: table-cell;
+    margin-bottom: 30px;
+    padding: 30px;
+    vertical-align: top;
+}
+
+.tabs-vertical-env .nav.tabs-vertical {
+    display: table-cell;
+    min-width: 120px;
+    vertical-align: top;
+    width: 150px;
+}
+
+.tabs-vertical-env .nav.tabs-vertical li.active > a {
+    background-color: #ffffff;
+    border: 0;
+}
+
+.tabs-vertical-env .nav.tabs-vertical li > a {
+    color: #333333;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nav.nav-tabs > li.active > a {
+    background-color: #ffffff;
+    border: 0;
+}
+
+.nav.nav-tabs > li > a,
+.nav.tabs-vertical > li > a {
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    color: #333333 !important;
+    cursor: pointer;
+    line-height: 50px;
+    font-weight: 700;
+    padding: 0px 20px;
+}
+
+.nav.nav-tabs > li > a:hover,
+.nav.tabs-vertical > li > a:hover {
+    color: #da4e09 !important;
+}
+
+.tab-content {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    color: #777777;
+}
+
+.nav.nav-tabs > li:last-of-type a {
+    margin-right: 0px;
+}
+
+.nav.nav-tabs {
+    border-bottom: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.navtab-bg {
+    background-color: #eeeeee;
+}
+
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:focus,
+.tabs-vertical-env .nav.tabs-vertical li.active > a {
+    border: none;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover,
+.tabs-vertical > li.active > a,
+.tabs-vertical > li.active > a:focus,
+.tabs-vertical > li.active > a:hover {
+    color: #da4e09 !important;
+}
+
+.tab-content>.tab-pane {
+    display: none
+}
+
+.tab-content>.active {
+    display: block
+}
+
+.item-info p {
+    margin-bottom: 0 !important;
+}
+
+
+/*profile*/
+
+.snip1344 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 230px;
+    max-width: 315px;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.4em;
+    background-color: #141414;
+}
+
+.snip1344 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.snip1344 .background {
+    width: 100%;
+    vertical-align: top;
+    opacity: 0.2;
+    -webkit-filter: grayscale(100%) blur(10px);
+    filter: grayscale(100%) blur(10px);
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+}
+
+.snip1344 figcaption {
+    width: 100%;
+    padding: 15px 25px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+.snip1344 .profile {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    max-width: 100px;
+    opacity: 1;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+}
+
+.snip1344 h3 {
+    margin: 0 0 5px;
+    font-weight: 400;
+}
+
+.snip1344 h3 span {
+    display: block;
+    font-size: 0.6em;
+    color: #f39c12;
+    opacity: 0.75;
+}
+
+
+/*.snip1344 i {
+  padding: 10px 5px;
+  display: inline-block;
+  font-size: 32px;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0.65;
+}*/
+
+.snip1344 a {
+    text-decoration: none;
+}
+
+.snip1344 i:hover {
+    opacity: 1;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+.snip1344:hover .background,
+.snip1344.hover .background {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+.nav-tabs-custom {
+    background-color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    width: auto 0;
+    margin-bottom: 5px
+}
+
+
+/*card*/
+
+.card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.card [data-background-color] {
+    color: #FFFFFF;
+}
+
+.card [data-background-color="orange"] {
+    background: linear-gradient(60deg, #d36434, #d25925);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.card [data-background-color="inverse"] {
+    background: linear-gradient(60deg, #1c2833, #212f3d);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.card .card-header {
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: #999999;
+}
+
+.card .card-header .title {
+    color: #FFFFFF;
+}
+
+.card .title {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+h4,
+.h4 {
+    font-size: 1.3em;
+    line-height: 1.4em;
+}
+
+.h4,
+h4 {
+    font-size: 18px;
+}
+
+.h4,
+.h5,
+.h6,
+h4,
+h5,
+h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-content {
+    padding: 15px 20px;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-content {
+    padding: 15px 20px;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card .table {
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
+table {
+    background-color: transparent;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.md-button.md-raised:not([disabled]) {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.md-button {
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: currentColor;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    outline: none;
+    border: 0;
+    display: inline-block;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 6px;
+    margin: 6px 8px;
+    line-height: 36px;
+    min-height: 36px;
+    background: transparent;
+    white-space: nowrap;
+    min-width: 88px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 0.010em;
+}
+
+.md-button.md-primary.md-raised {
+    color: rgba(255, 255, 255, 0.87);
+    /*background-color: rgb(63,81,181);*/
+    background-color: #1c2833;
+}
+
+.md-button.md-primary1.md-raised {
+    color: rgba(255, 255, 255, 0.87);
+    /*background-color: rgb(63,81,181);*/
+    background-color: #1c2833;
+}
+
+.md-button.md-primary1.md-raised:hover {
+    background-color: #d25925;
+}
+
+.md-button.md-primary.md-raised {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgb(63, 81, 181);
+}
+
+.md-button.md-selectImg.md-raised:hover {
+    background-color: #d25925;
+}
+</style>

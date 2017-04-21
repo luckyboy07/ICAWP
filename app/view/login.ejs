@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ICAWP</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <!--link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /-->
+    <link href="public/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="public/bower_components/angular-toastr/dist/angular-toastr.css" rel="stylesheet" type="text/css" />
+    <link href="public/bower_components/angucomplete-alt/angucomplete-alt.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <!--link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" /-->
+    <link href="public/bower_components/Ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="public/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="public/bower_components/textAngular/dist/textAngular.css">
+    <link rel="stylesheet" href="public/bower_components/ngPrint/ngPrint.css">
+    <link rel="stylesheet" href="public/bower_components/ng-dialog/css/ngDialog.min.css">
+    <link rel="stylesheet" href="public/bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/bower_components/angular-xeditable/dist/css/xeditable.min.css">
+    <link rel="stylesheet" href="public/bower_components/angularPrint/angularPrint.css">
+    <link rel="stylesheet" href="public/bower_components/ng-table/dist/ng-table.css">
+    <!-- <link rel="stylesheet" href="public/bower_components/materialize/dist/css/materialize.css"> -->
+    
+    <!-- <link href="public/assets/css/components.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="public/assets/css/core.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="public/assets/css/menu.css" rel="stylesheet" type="text/css" /> -->
+
+</head>
+<!-- ng-class="{'login-page':$state.includes('login')}" -->
+<body class="hold-transition skin-blue fixed" ng-class="{'sidebar-collapse ':curr.person_type == 'Alumni' || loginuser.person_type == 'Alumni','sidebar-mini':curr.person_type == 'Admin' || loginuser.person_type !== 'Alumni' }" ng-app="ICCP" style="background-color: #eeeeee">
+    <!--
+        *
+        *
+        *
+        Angular View
+        *
+        *
+        *
+        -->
+    <div ui-view style="margin-bottom: 70px;"></div>
+    <!--
+        *
+        *
+        *
+        Angular View
+        *
+        *
+        *
+        -->
+    <!-- ./wrapper -->
+    <!-- jQuery 2.1.3 -->
+    <script src="public/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Angular JS -->
+    <script src="public/bower_components/angular/angular.min.js" type="text/javascript"></script>
+    <!-- Angular Ui Router -->
+    <script src="public/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="public/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="public/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="public/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!-- iCheck -->
+    <script src="public/bower_components/iCheck/icheck.min.js" type="text/javascript"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="public/bower_components/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="public/bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="public/bower_components/async/dist/async.min.js"></script>
+    <script src="public/bower_components/restangular/dist/restangular.js"></script>
+    <script src="public/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="public/bower_components/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="public/bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+    <script src="public/bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
+    <script src="public/bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script src="public/bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="public/bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="public/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="public/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="public/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="public/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="public/bower_components/moment/min/moment.min.js"></script>
+    <script src="public/bower_components/angular-moment/angular-moment.min.js"></script>
+    <script src="public/bower_components/chart.js/dist/Chart.js"></script>
+    <script src="public/bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="public/bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
+    <script src="public/bower_components/raphael/raphael.min.js"></script>
+    <script src="public/bower_components/morris.js/morris.min.js"></script>
+    <script src="public/bower_components/angular-morris/build/module/angular-morris/angular-morris.min.js"></script>
+    <script src="public/bower_components/ngPrint/ngPrint.js"></script>
+    <script src="public/bower_components/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="public/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="public/bower_components/angularPrint/angularPrint.js"></script>
+    <script src="public/bower_components/ng-table/dist/ng-table.min.js"></script>
+    <!-- <script src="public/bower_components/materialize/dist/js/materialize.min.js"></script> -->
+    <script src="public/bower_components/angular-materialize/src/angular-materialize.js"></script>
+    <script src="public/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <!--
+        *
+        *
+        ANGULAR LIBRARY
+        *
+        *-->
+    <script src="public/js/plugin.js"></script>
+    <script src="public/js/app.js"></script>
+    <script src="public/js/directive.js"></script>
+    <!-- CONTROLLER -->
+    <script src="public/js/controller/alumni.controller.js"></script>
+    <script src="public/js/controller/alumni.detail.controller.js"></script>
+    <script src="public/js/controller/main.controller.js"></script>
+    <script src="public/js/controller/loginCtrl.js"></script>
+    <script src="public/js/controller/wallpost.controller.js"></script>
+    <script src="public/js/controller/report.js"></script>
+    <script src="public/js/controller/mailCtrl.js"></script>
+    <script src="public/js/controller/registerCtrl.js"></script>
+    <script src="public/js/controller/profile.js"></script>
+    <script src="public/js/controller/job_match.js"></script>
+    <script src="public/js/controller/course.controller.js"></script>
+    <script src="public/js/controller/batch.controller.js"></script>
+    <script src="public/js/controller/account.controller.js"></script>
+    <script src="public/js/controller/award.controller.js"></script>
+    <script src="public/js/controller/search.controller.js"></script>
+    <script src="public/js/controller/profileDetail.controller.js"></script>
+    <!-- SERVICES -->
+    <script src="public/js/services/services.js"></script>
+    <script>
+    $(function() {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+    
+    </script>
+</body>
+
+</html>

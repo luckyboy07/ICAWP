@@ -1,0 +1,447 @@
+<section class="content-header">
+    <h1>
+            REPORTS
+            <!-- <small>Version 1.0</small> -->
+          </h1>
+    <!--   <ol class="breadcrumb">
+        <li><a href="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">REPORTS</li>
+    </ol> -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <!-- Info boxes -->
+    <div class="row">
+        <!--  <div class="dash col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box-blue">
+                <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
+                <div class="info-box-content">
+                    <span class="info-box-number">52</span>
+                    <span class="info-box-text">52</span>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="dash col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box-green">
+                <span class="info-box-icon bggreen"><img src="./images/icon/account-multiple.svg" class="dashcardicon"></span>
+                <div class="info-box-content">
+                    <span class="info-box-number">511</span>
+                    <span class="info-box-text">Personels</span>
+                </div>
+                <! /.info-box-content -->
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{employee.length}}</h3>
+                    <p>Employed</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-ios-person"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{unemployedList.length}}</h3>
+                    <p>Unemployed</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-ios-person"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <div class="card">
+                <!--   <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Employed'" ng-click="switchGraph()">
+                        <i class="fa fa-line-chart"></i>
+                    </label>
+                    <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Unemployed'" ng-click="switchGraph()">
+                        <i class="fa fa-area-chart"></i>
+                    </label> -->
+                <div class="card-header" data-background-color="inverse">
+                    <h3 class="title"><i class="fa fa-group fa-fw"></i>{{radioModel}}</h3>
+                    <div class="col-sm-6" style="padding-top: 15px;">
+                        <div class="btn-group pull-left">
+                            <button class="btn btn-sm btn-flat btn-default" ng-click="exportModal()">
+                                Generate report
+                            </button>
+                            <div class="btn-group box-tools" uib-dropdown>
+                                <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                                    {{selectedYear}} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                                    <li role="menuitem" ng-click="getSelectedYear('All')"><a href="">All</a></li>
+                                    <li role="menuitem" ng-repeat="year in byYear" ng-click="getSelectedYear(year.year)"><a href="">{{year.year}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group pull-right" uib-dropdown>
+                        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                            {{radioModel}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li role="menuitem"><a href="" ng-click="switchGraph('All')">All</a></li>
+                            <li role="menuitem"><a href="" ng-click="switchGraph('Unemployed')">Unemployed</a></li>
+                            <li role="menuitem"><a href="" ng-click="switchGraph('Employed')">Employed</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content" ng-if="radioModel == 'All'">
+                    <div line-chart line-data='areaCharts' line-xkey='year' line-ykeys='["employeed", "unemployeed"]' line-labels='["Employee", "Unemployee"]' line-colors='["#31C0BE", "#c7254e"]'>
+                    </div>
+                </div>
+                <div class="card-content" ng-if="radioModel == 'Unemployed'">
+                    <div line-chart line-data='lineCharts.data' line-xkey='{{lineCharts.xkey}}' line-ykeys='lineCharts.ykeys' line-labels='lineCharts.labels' line-colors='lineCharts.colors'>
+                    </div>
+                </div>
+                <div class="card-content" ng-if="radioModel == 'Employed'">
+                    <div line-chart line-data='lineCharts2.data' line-xkey='{{lineCharts2.xkey}}' line-ykeys='lineCharts2.ykeys' line-labels='lineCharts2.labels' line-colors='lineCharts2.colors'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  <div class="col-md-3">
+            MAP & BOX PANE
+            <div class="panel-heading">
+                    <div class="btn-group pull-left">
+                    <h3 class="box-title">Job Matching</h3>
+                    </div>
+                </div>
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Job Matching</h3>
+                    <div class="pull-right btn-group box-tools" uib-dropdown>
+                        <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                            {{selectedYear}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                          <li role="menuitem" ng-click="getSelectedYear('All')"><a href="">All</a></li>
+                            <li role="menuitem" ng-repeat="year in byYear" ng-click="getSelectedYear(year.year)"><a href="">{{year.year}}</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <canvas id="pie" class="chart chart-pie" chart-legend="true" chart-data="data1" chart-labels="labels" chart-options="options">
+                </canvas>
+            </div>
+        </div> -->
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h3 class="title">Job Matching</h3>
+                </div>
+                <div class="card-content">
+                    <div class="pull-right btn-group box-tools" uib-dropdown>
+                        <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                            {{selectedYear}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                            <li role="menuitem" ng-click="getSelectedYear('All')"><a href="">All</a></li>
+                            <li role="menuitem" ng-repeat="year in byYear" ng-click="getSelectedYear(year.year)"><a href="">{{year.year}}</a></li>
+                        </ul>
+                    </div>
+                    <canvas id="pie" class="chart chart-pie" chart-legend="true" chart-data="data1" chart-labels="labels" chart-options="options">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    </div>
+</section>
+<style type="text/css">
+/* ==============
+  Panels
+===================*/
+
+.panel {
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.panel .panel-body {
+    padding: 20px;
+}
+
+.panel .panel-body p {
+    margin: 0px;
+}
+
+.panel .panel-body p + p {
+    margin-top: 15px;
+}
+
+.panel-heading {
+    border-radius: 0;
+    border: none !important;
+    padding: 10px 20px;
+}
+
+.panel-default > .panel-heading {
+    background-color: #fafafa;
+    border-bottom: none;
+    color: #797979;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.panel-footer {
+    background: #fafafa;
+    border-top: 0px;
+}
+
+.panel-color .panel-title {
+    color: #ffffff;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #6e8cd7;
+}
+
+.panel-success > .panel-heading {
+    background-color: #33b86c;
+}
+
+.panel-info > .panel-heading {
+    background-color: #29b6f6;
+}
+
+.panel-warning > .panel-heading {
+    background-color: #ffd740;
+}
+
+.panel-danger > .panel-heading {
+    background-color: #ef5350;
+}
+
+.panel-purple > .panel-heading {
+    background-color: #7e57c2;
+}
+
+.panel-pink > .panel-heading {
+    background-color: #ec407a;
+}
+
+.panel-inverse > .panel-heading {
+    background-color: #4c5667;
+}
+
+canvas {
+    color: red;
+}
+
+
+/*card*/
+
+.card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.card [data-background-color] {
+    color: #FFFFFF;
+}
+
+.card [data-background-color="orange"] {
+    background: linear-gradient(60deg, #d36434, #d25925);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.card [data-background-color="inverse"] {
+    background: linear-gradient(60deg, #1c2833, #212f3d);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.card .card-header {
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: #999999;
+}
+
+.card .card-header .title {
+    color: #FFFFFF;
+}
+
+.card .title {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+h4,
+.h4 {
+    font-size: 1.3em;
+    line-height: 1.4em;
+}
+
+.h4,
+h4 {
+    font-size: 18px;
+}
+
+.h4,
+.h5,
+.h6,
+h4,
+h5,
+h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-content {
+    padding: 15px 20px;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-content {
+    padding: 15px 20px;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card .table {
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
+table {
+    background-color: transparent;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+</style>

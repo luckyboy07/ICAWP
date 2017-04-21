@@ -1,0 +1,377 @@
+<!-- Content Header (Page header) -->
+<section class="content" >
+    <div class="row" role="search-row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header" data-background-color="inverse">
+                    <h4 class="title">List of Accounts</h4>
+                </div>
+                <!-- <div class="panel-body padding p-0"> -->
+                    
+                    <div class="card-content table-responsive">
+                    <div class="col-sm-12">
+                        <div class="pull-left">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <a ng-click="refresh()" class="md-button md-raised btn btn-flat btn-sm btn-success">
+                                        <i class="fa fa-refresh"></i> Refresh
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="pull-right">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control input-sm" placeholder="Search for..." ng-model="txtSearch" ng-change="(txtSearch.length < 1)?searchData():0">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-flat btn-sm btn-default" ng-click="searchData()" ng-keypress="($event.which === 13)?searchData():0"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        <table class="table table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Account Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in accounts">
+                                    <td>{{item.name || 'None'}}</td>
+                                    <td>{{item.useraccount.username || 'None'}}</td>
+                                    <td ng-if="item.Uaccount_status == 1"><span class="label label-success">Yes</span></td>
+                                    <td ng-if="item.Uaccount_status == 0 || item.Uaccount_status == 'null'"><span class="label label-danger">No</span></td>
+                                    <td>
+                                        <a class="md-button md-raised btn btn-sm btn-primary" ng-if="item.Uaccount_status == 0"  ng-click="generateUser(item.alumni_id)" >
+                                            <i class="fa fa-edit"></i> Generate account
+                                        </a>
+                                         <a class="md-button md-raised btn btn-sm btn-info" ng-click="resetPassword(item.useraccount.uc_id)" ng-if="item.Uaccount_status == 1">
+                                            <i class="fa fa-refresh"></i> Reset password
+                                        </a>
+                                        <!--  <button class="btn btn-info btn-sm btn-flat" ng-click="generateUser(item.alumni_id)" style="border-radius: 50%" ><i class="ion-refresh"></i></button>Generate account -->
+                                        <!-- button class="btn btn-info btn-sm btn-flat" ng-click="resetPassword(item.uc_id)" style="border-radius: 50%"><i class="ion-refresh"></i></button>Reset password -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="hide-if-no-paging">
+                                <tr>
+                                    <td colspan="10" align="center">
+                                        <ul class="pagination"></ul>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="text-center">
+                    <uib-pagination boundary-links="true" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" class="pagination" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                </div>
+                    </div>
+                <!-- </div> -->
+                
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+.panel {
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.panel .panel-body {
+    padding: 20px;
+}
+
+.panel .panel-body p {
+    margin: 0px;
+}
+
+.panel .panel-body p + p {
+    margin-top: 15px;
+}
+
+.panel-heading {
+    border-radius: 0;
+    border: none !important;
+    padding: 10px 20px;
+}
+
+.panel-default > .panel-heading {
+    background-color: #fafafa;
+    border-bottom: none;
+    color: #797979;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.panel-footer {
+    background: #fafafa;
+    border-top: 0px;
+}
+
+.panel-color .panel-title {
+    color: #ffffff;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #6e8cd7;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #6e8cd7;
+}
+
+/*card*/
+.card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+}
+.card [data-background-color] {
+    color: #FFFFFF;
+}
+
+.card [data-background-color="orange"] {
+    background: linear-gradient(60deg, #d36434, #d25925);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+.card [data-background-color="inverse"] {
+    background: linear-gradient(60deg, #1c2833, #212f3d);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.card .card-header {
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: #999999;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+.card .card-header .title {
+    color: #FFFFFF;
+}
+
+.card .title {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+h4, .h4 {
+    font-size: 1.3em;
+    line-height: 1.4em;
+}
+
+.h4, h4 {
+    font-size: 18px;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+
+
+.card .card-header .category {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.card .category:not([class*="text-"]) {
+    color: #999999;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.card .card-content {
+    padding: 15px 20px;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+.card .table {
+    margin-bottom: 10px;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
+table {
+    background-color: transparent;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.table-head-color {
+    color: #d64809;
+}
+.btn .btn-flat
+{
+    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+}
+
+
+
+
+
+
+/*button*/
+.md-button.md-raised:not([disabled]) {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.md-button {
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: currentColor;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    outline: none;
+    border: 0;
+    display: inline-block;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 6px;
+    margin: 6px 8px;
+    line-height: 36px;
+    min-height: 36px;
+    background: transparent;
+    white-space: nowrap;
+    min-width: 88px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 0.010em;
+}
+.md-button.md-primary.md-raised{
+    color: rgba(255,255,255,0.87);
+    background-color: rgb(63,81,181);
+}
+.md-button.md-primary.md-raised:hover{
+    
+    background-color: #1c2833;
+}
+.md-button.md-cancel.md-raised{
+   /* color: rgba(255,255,255,0.87);
+    background-color: rgb(63,81,181);*/
+}
+.md-button.md-selectImg.md-raised:hover{
+    
+    background-color: #d25925;
+}
+</style>
+

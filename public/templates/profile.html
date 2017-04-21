@@ -1,0 +1,346 @@
+<section class="content-header">
+    <h1 class="text-center" style="color: #e96154 !important;font-size:  36px !important;">Profile</h1>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="panel-body autoscroll profholder">
+                            <img class="profilepic" ngf-src="detail.image_path || './public/assets/images/users/avatar.png'" alt="User profile picture">
+                            <!-- ng-src="{{detail.image_path}}" -->
+                            <div class="image-preview" style="width: 100%;height: 0;">
+                                <div class="uploadbuttonHolder">
+                                    <div class="uploadbutton image-preview-input" ng-if="showupload">
+                                        <img class="img" src="./public/assets/images/IC-logo.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profpic text-center">
+                                {{detail.firstname}}
+                            </div>
+                        </div>
+                        <!--  <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" ng-src="{{detail.image_path}}">
+                            <h3 class="profile-username text-center" style="word-break: break-all;">{{detail.firstname}}</h3>
+                            <h3 class="profile-username text-center" style="word-break: break-all;">{{detail.middlename}}</h3>
+                            <h3 class="profile-username text-center" style="word-break: break-all;">{{detail.lastname}}</h3>
+                            <p class="text-muted text-center">{{detail.job_history.position}}</p>
+                        </div> -->
+                    </div>
+                    <!--  <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">About Me</h3>
+                        </div>
+                        <div class="box-body">
+                            <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+                            <p class="text-muted">
+                                {{detail.account_course.name}}
+                            </p>
+                            <hr>
+                            <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+                            <p class="text-muted">{{detail.address}}</p>
+                            <hr>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom" bs-tabs>
+                        <div data-title="<i class='fa fa-info'></i> General Info" bs-pane>
+                            <div class="tab-content">
+                                <div class="box-body">
+                                    <form name="alumniform" ng-submit="editProfile()">
+                                        <div class="col-sm-6">
+                                            <div class="form-group ">
+                                                <label>Firstname</label>
+                                                <input type="text" ng-model="detail.firstname" class="form-control" disabled placeholder="Firstname" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Middlename</label>
+                                                <input type="text" ng-model="detail.middlename" class="form-control" disabled placeholder="Middlename" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Lastname</label>
+                                                <input type="text" ng-model="detail.lastname" class="form-control" disabled placeholder="Lastname" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Gender</label>
+                                                <input type="text" class="form-control" ng-model="detail.gender" disabled placeholder="Gender">
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Contact Number</label>
+                                                <input type="text" ng-model="detail.contactnum" class="form-control" placeholder="Contact Number" numbers-only />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Nationality</label>
+                                                <input type="text" ng-model="detail.nationality" class="form-control" placeholder="Nationality" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group ">
+                                                <label>Date of Birth</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" ng-model="detail.birth_date" data-date-format="MM-dd-yyyy" bs-datepicker placeholder="MM/DD/YYYY" disabled />
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-fw fa-calendar"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Email Address</label>
+                                                <input type="text" ng-model="detail.email_address" class="form-control" placeholder="Email Address" required />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>Course Graduated</label>
+                                                <input type="text" class="form-control" ng-model="detail.account_course.name" disabled placeholder="Course">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group ">
+                                                        <label>Month Graduated</label>
+                                                        <input type="text" class="form-control" ng-model="detail.month_graduated" disabled placeholder="Year Graduated">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group ">
+                                                        <label>Year Graduated</label>
+                                                        <input type="text" class="form-control" ng-model="detail.year_graduate" disabled placeholder="Year Graduated">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group col-md-6">
+                            <label>Year Graduated</label>
+                            <input type="text" ng-model="detail.year_graduate" class="form-control" placeholder="Year Graduated" numbers-only required />
+                        </div> -->
+                                            <div class="form-group ">
+                                                <label>Civil Status</label>
+                                                <input type="text" class="form-control" ng-model="detail.civil" disabled placeholder="Civil">
+                                            </div>
+                                            <!-- <div class="form-group col-md-6">
+                            <label>Civil Status</label>
+                            <input type="text" ng-model="detail.civil" class="form-control" placeholder="Civil" required />
+                        </div> -->
+                                            <div class="form-group ">
+                                                <label>Home Address</label>
+                                                <input type="text" ng-model="detail.address" class="form-control" placeholder="Address" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3 pull-right">
+                                            <button type="submit" class="btn btn-primary btn-flat btn-block" ng-disabled="alumniform.$invalid">Save Entry</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-title="<i class='fa fa-list'></i> Job History" bs-pane>
+                            <div class="tab-content">
+                                <div class="box-body">
+                                    <div class="box-header">
+                                        <div class="pull-left">
+                                            <a class="btn btn-flat btn-sm btn-primary" ng-click="jobModal()">
+                                                <i class="glyphicon glyphicon-plus"></i> Add a workplace
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover table-condensed" ng-table="profTable">
+                                        <tr ng-repeat="job in $data" class="text-center">
+                                            <td class="" data-title="'Company Name'">
+                                                {{job.company_name}}
+                                            </td>
+                                            <td class="" data-title="'Position'">
+                                                {{job.position}}
+                                            </td>
+                                            <td class="" data-title="'Company Address'">
+                                                {{job.address || 'None'}}
+                                            </td>
+                                            <td class="" data-title="'Status'">
+                                                <span ng-if="job.current == 1" class="label label-success">Current</span>
+                                                <span ng-if="job.current == 0" class="label label-warning">Past</span>
+                                            </td>
+                                            <td class="text-center" data-title="'Action'">
+                                                <a class="btn btn-info btn-xs btn-flat" ng-click="jobModal(job)"><i class="glyphicon glyphicon-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                  <!--   <div ng-if="job.length == 0">
+                                        NO JOB POSTED YET
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div data-title="<i class='fa fa-list'></i> Privacy Setting" bs-pane>
+                            <div class="tab-content">
+                                <div class="box-body">
+                                    <div class="form-group col-md-6">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" ng-model="userDetail.username">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label></label>
+                                        <button type="submit" class="md-button md-raised md-primary btn btn-primary btn-flat btn-block" ng-click="updateUsername()">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group col-md-6">
+                                        <label>New Password</label>
+                                        <input type="password" class="form-control" ng-model="newpassword" placeholder="Password">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label></label>
+                                        <button type="submit" class="md-button md-raised md-primary btn btn-primary btn-flat btn-block" ng-click="updatePassword(newpassword)">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Update Username or Password -->
+                            <!-- <div class="form-group col-md-6">
+                                <label>Firstname</label>
+                                <input type="text" class="form-control" ng-model="detail.firstname" disabled placeholder="Firtname">
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<style type="text/css">
+.profilepic {
+    width: 100%;
+    height: 250px;
+    margin-bottom: -10px;
+    border-radius: 2px 2px 0 0;
+}
+
+.profholder {
+    height: 647px;
+}
+
+.uploadbuttonHolder {
+    width: 70%;
+    position: relative;
+    display: flex;
+    margin: auto;
+}
+
+.uploadbutton {
+    width: 50px;
+    margin: -15px auto auto;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .16), 0 2px 10px rgba(0, 0, 0, .12);
+    border: 0;
+    background: #fff;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0;
+}
+
+.profpic {
+    text-align: center;
+    font-size: 18px;
+    padding: 55px 10px 10px;
+    background: #247571;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 0 0 2px 2px;
+}
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.uploadbutton .img {
+    border-radius: 50%;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+}
+
+.uploadbutton img {
+    width: 100%;
+    margin: auto;
+    padding: 6px;
+}
+
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+
+/*button*/
+
+.md-button.md-raised:not([disabled]) {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.md-button {
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: currentColor;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    outline: none;
+    border: 0;
+    display: inline-block;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 6px;
+    margin: 6px 8px;
+    line-height: 36px;
+    min-height: 36px;
+    background: transparent;
+    white-space: nowrap;
+    min-width: 88px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 0.010em;
+}
+
+.md-button.md-primary.md-raised {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgb(63, 81, 181);
+}
+
+.md-button.md-primary.md-raised:hover {
+    background-color: #1c2833;
+}
+
+.md-button.md-cancel.md-raised {
+    /* color: rgba(255,255,255,0.87);
+    background-color: rgb(63,81,181);*/
+}
+
+.md-button.md-selectImg.md-raised:hover {
+    background-color: #d25925;
+}
+</style>

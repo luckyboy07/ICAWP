@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- <title>Report</title> -->
+</head>
+
+<body>
+    <h3 ng-if="selected">List of {{selected}}</h3>
+    <h3 ng-if="year">List of School Year {{schoolyear}}</h3>
+    <table ng-if="year" style=" font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">
+        <tr>
+            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Name</th>
+            <th style=" border: 1px solid #dddddd;text-align: left; padding: 8px;">Course</th>
+            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Year graduated</th>
+            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Profession</th>
+            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Remarks</th>
+            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Years of Work Experience</th>
+            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Company Affiliation</th>
+        </tr>
+        <tr ng-repeat="item in list">
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.lastname}},{{item.middlename}},{{item.lastname}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.course.name}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.year_graduate}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job!==undefined">{{item.last_job.job_type || 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job!==undefined">{{item.latest_job.job_type || 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job!==undefined">{{item.last_job.remarks|| 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job!==undefined">{{item.latest_job.remarks || 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job!==undefined">{{item.last_job.experience || 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job!==undefined">Current</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job!==undefined">{{item.last_job.company_name || 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job!==undefined">{{item.latest_job.company_name || 'None'}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job==undefined">None</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job==undefined">None</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job==undefined">None</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" ng-if="item.latest_job==undefined && item.last_job==undefined">None</td>
+            <!--  <div ng-if="item.latest_job==undefined && item.last_job!==undefined">
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.last_job.job_type}}</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.last_job.remarks}}</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.last_job.experience}}</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.latest_job.company_name}}</td>
+            </div>
+            <div ng-if="item.latest_job!==undefined">
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.latest_job.job_type}}</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.latest_job.remarks}}</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">Current</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.latest_job.company_name}}</td>
+            </div>
+             <div ng-if="item.latest_job==undefined && item.last_job==undefined">
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">None</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">None</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">None</td>
+                <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">None</td>
+            </div> -->
+        </tr>
+    </table>
+    <ol style="list-style-type:decimal" ng-if="selected">
+        <li ng-repeat="p in list" style="display:list-item;">{{$index+1}}. {{p.lastname}},{{p.firstname}}</li>
+    </ol>
+</body>
+
+</html>

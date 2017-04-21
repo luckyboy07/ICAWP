@@ -1,0 +1,323 @@
+<section class="content" >
+    <div class="row">
+        <!--  <div ng-include="'./public/templates/sidebar.mailbox.html'">
+        </div> -->
+        <!-- /.col -->
+        <div class="col-md-12">
+           <div class="card">
+                    <div class="card-header" data-background-color="inverse">
+                        <h3 class="panel-title">Compose New Message</h3>
+                    </div>
+                    <form ng-submit="send()">
+                        <div class="card-content">
+                            <div class="form-group">
+                                <div angucomplete-alt placeholder="Search..." pause="100" selected-object="getalumni" local-data="alumnis" search-fields="firstname" title-field="firstname,email_address" minlength="1" input-class="form-control form-control-small" match-class="highlight" initial-value="val" input-changed="changed" ng-keypress="($event.which === 13)?enterValue(val):0" override-suggestions="true" ng-focus="true">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Subject:" ng-model="datas.subject">
+                                </div>
+                                <div class="form-group">
+                                    <text-angular ng-model="datas.body"></text-angular>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="pull-right">
+                                    <button type="submit" class="md-button md-raised btn btn-primary" ng-click="send()"><i class="fa fa-envelope-o"></i> Send</button>
+                                </div>
+                                <button type="reset" class="md-button md-raised btn btn-danger"><i class="fa fa-times"></i> Discard</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    
+    .panel {
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.panel .panel-body {
+    padding: 20px;
+}
+
+.panel .panel-body p {
+    margin: 0px;
+}
+
+.panel .panel-body p + p {
+    margin-top: 15px;
+}
+
+.panel-heading {
+    border-radius: 0;
+    border: none !important;
+    padding: 10px 20px;
+}
+
+.panel-default > .panel-heading {
+    background-color: #fafafa;
+    border-bottom: none;
+    color: #797979;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.panel-footer {
+    background: #fafafa;
+    border-top: 0px;
+}
+
+.panel-color .panel-title {
+    color: #ffffff;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #6e8cd7;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #6e8cd7;
+}
+/*card*/
+.card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+}
+.card [data-background-color] {
+    color: #FFFFFF;
+}
+
+.card [data-background-color="orange"] {
+    background: linear-gradient(60deg, #d36434, #d25925);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+.card [data-background-color="inverse"] {
+    background: linear-gradient(60deg, #1c2833, #212f3d);
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.card .card-header {
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: #999999;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+.card .card-header .title {
+    color: #FFFFFF;
+}
+
+.card .title {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+h4, .h4 {
+    font-size: 1.3em;
+    line-height: 1.4em;
+}
+
+.h4, h4 {
+    font-size: 18px;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+
+
+.card .card-header .category {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.card .category:not([class*="text-"]) {
+    color: #999999;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.card .card-content {
+    padding: 15px 20px;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+.card .table {
+    margin-bottom: 10px;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
+table {
+    background-color: transparent;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.table-head-color {
+    color: #d64809;
+}
+.btn .btn-flat
+{
+    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+}
+
+
+/*button*/
+.md-button.md-raised:not([disabled]) {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.md-button {
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: currentColor;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    outline: none;
+    border: 0;
+    display: inline-block;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 6px;
+    margin: 6px 8px;
+    line-height: 36px;
+    min-height: 36px;
+    background: transparent;
+    white-space: nowrap;
+    min-width: 88px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 0.010em;
+}
+.md-button.md-primary.md-raised{
+    color: rgba(255,255,255,0.87);
+    background-color: rgb(63,81,181);
+}
+.md-button.md-primary.md-raised:hover{
+    
+    background-color: #1c2833;
+}
+.md-button.md-cancel.md-raised{
+   /* color: rgba(255,255,255,0.87);
+    background-color: rgb(63,81,181);*/
+}
+.md-button.md-selectImg.md-raised:hover{
+    
+    background-color: #d25925;
+}
+</style>

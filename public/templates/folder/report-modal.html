@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title">Generate Report</h3>
+</div>
+<div class="modal-body">
+    <div class="box-body" style="padding-top: 20px;">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Options</label>
+            <div class="col-sm-9" required>
+                <select class="form-control" name="selected" ng-model="value" ng-change="report(value)">
+                    <option value="" disabled>Please select</option>
+                    <option value="Employeed">Employeed</option>
+                    <option value="Unemployeed">Unemployeed</option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="form-group" ng-if="display">
+            <label class="col-sm-3 control-label">From</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="detail.date_from" data-date-format="MM-dd-yyyy" bs-datepicker/>
+                    <span class="input-group-addon" style="cursor: pointer">
+                                <i class="fa fa-lg fa-calendar"></i>
+                                </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="display">
+            <label class="col-sm-3 control-label">To</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="detail.date_to" data-date-format="MM-dd-yyyy" bs-datepicker/>
+                    <span class="input-group-addon" style="cursor: pointer">
+                                <i class="fa fa-lg fa-calendar"></i>
+                                </span>
+                </div>
+            </div>
+        </div> -->
+       <!--  <div ng-include="'./public/templates/folder/report-modal-content.html'" ng-if="selected" id="print" style="display:none">
+        </div> -->
+         <div ng-include="'./public/templates/folder/report-modal-content.html'" ng-if="selected" id="print">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-print print-element-id="print">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

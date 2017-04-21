@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title">Confirm Password</h3>
+</div>
+<div class="modal-body">
+    <div class="box-body" style="padding-top: 20px;">
+        <div class="form-group col-md-12">
+            <label>Old Password</label>
+            <input type="password" ng-model="oldpassword" class="form-control" placeholder="Password" required />
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="confirm(oldpassword)">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

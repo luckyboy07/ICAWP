@@ -1,0 +1,112 @@
+<section class="content-header">
+    <h1>
+            Job Match
+            <!-- <small>Version 1.0</small> -->
+          </h1>
+    <!--   <ol class="breadcrumb">
+        <li><a href="main.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">REPORTS</li>
+    </ol> -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <!-- Info boxes -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{employee.length}}</h3>
+                    <p>Employed</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-ios-person"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{unemployedList.length}}</h3>
+                    <p>Unemployed</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-ios-person"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!--  <div class="dash col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box-blue">
+                <span class="info-box-icon bgblue"><img src="./images/icon/package.svg" class="dashcardicon"></span>
+                <div class="info-box-content">
+                    <span class="info-box-number">52</span>
+                    <span class="info-box-text">52</span>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="dash col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box-green">
+                <span class="info-box-icon bggreen"><img src="./images/icon/account-multiple.svg" class="dashcardicon"></span>
+                <div class="info-box-content">
+                    <span class="info-box-number">511</span>
+                    <span class="info-box-text">Personels</span>
+                </div>
+                <!-- /.info-box-content -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="panel panel-default">
+                <!--   <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Employed'" ng-click="switchGraph()">
+                        <i class="fa fa-line-chart"></i>
+                    </label>
+                    <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Unemployed'" ng-click="switchGraph()">
+                        <i class="fa fa-area-chart"></i>
+                    </label> -->
+               <!--  <div class="btn-group pull-right" uib-dropdown>
+                    <button id="split-button" type="button" class="btn btn-danger">{{radioModel}}</button>
+                    <button type="button" class="btn btn-danger" uib-dropdown-toggle>
+                        <span class="caret"></span>
+                        <span class="sr-only">Split button!</span>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                    <li role="menuitem" ng-hide="radioModel == 'All'"><a href="" ng-click="switchGraph('All')">All</a></li>
+                        <li role="menuitem" ng-hide="radioModel == 'Unemployed'"><a href="" ng-click="switchGraph('Unemployed')">Unemployed</a></li>
+                        <li role="menuitem" ng-hide="radioModel == 'Employed'"><a href="" ng-click="switchGraph('Employed')">Employed</a></li>
+                    </ul>
+                </div> -->
+                <!-- <div class="btn-group pull-right" uib-dropdown>
+                    <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                        {{radioModel}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem"><a href="" ng-click="switchGraph('Unemployed')">Unemployed</a></li>
+                        <li role="menuitem"><a href="" ng-click="switchGraph('Employed')">Employed</a></li>
+                    </ul>
+                </div> -->
+                <!-- <div class="panel-heading">
+                    <div class="btn-group pull-left">
+                        <h3 class="panel-title"><i class="fa fa-group fa-fw"></i>{{radioModel}}</h3>
+                        <button class="btn btn-sm btn-flat btn-default" ng-click="onClick()">
+                            Generate report
+                        </button>
+                    </div>
+                </div> -->
+                 <div class="panel-body">
+                  <!--  <div donut-chart="" donut-data='[{label: "Download Sales", value: 12},{label: "In-Store Sales",value: 30},{label: "Mail-Order Sales", value: 20}]' donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
+                   donut-label-color='"#000000"' donut-background-color='"#ffffff"' donut-formatter='"currency"'>
+                   </div> -->
+                    <div donut-chart="" donut-data="donut.data" donut-colors="donut.chartColors" donut-formatter="donut.myFormatter">
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    </div>
+</section>

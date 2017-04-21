@@ -1,0 +1,52 @@
+<div class="row">
+    <form role="form" name="pricebookForm" ng-submit="addAlumni()">
+        <div class="col-md-12">
+            <div class="col-md-9">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <!-- <h3 class="box-title">Job History</h3> -->
+                        <div class="pull-left">
+                            <a class="btn btn-flat btn-sm btn-primary" ng-click="jobModal()">
+                                <i class="glyphicon glyphicon-plus"></i> Add a workplace
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <!-- <a href="#"><i class="glyphicon glyphicon-plus"></i> Add a workplace</a> -->
+                                <tr ng-repeat="job in jobhistories">
+                                    <td>{{job.company_name}}
+                                        <small>{{job.position}}</small>
+                                    </td>
+                                    <td class="text-right">
+                                        <span class="btn btn-success btn-xs btn-flat" ng-if="job.current == 1">current</span>
+                                        <a class="btn btn-info btn-xs btn-flat" ng-click="jobModal(job)"><i class="glyphicon glyphicon-edit"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot class="hide-if-no-paging">
+                                    <tr>
+                                        <td colspan="10" align="center">
+                                            <ul class="pagination"></ul>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-warning">
+                    <div class="box-body">
+                        <button type="submit" ng-disabled="bundleForm.$invalid" class="btn btn-primary btn-flat btn-block">Save Entry</button>
+                        <a class="btn btn-success btn-flat btn-block" ng-show="showPublish" ng-click="publishProduct(detail.pb_id)">Publish</a>
+                        <a class="btn btn-danger btn-flat btn-block" ng-show="showArchive" ng-click="archiveProduct(detail.pb_id)">Archive</a>
+                        <a class="btn btn-default btn-block" ng-click="goBack()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

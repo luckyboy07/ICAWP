@@ -1,0 +1,220 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li ng-show="currentUser.person_type == 'Admin'">
+            <a ui-sref="main.alumni">
+                <i class="fa fa-list-alt"></i> <span>List of Alumni</span>
+                <!-- <small class="label pull-right bg-red">3</small> -->
+            </a>
+        </li>
+        <li>
+            <a ui-sref="main.post">
+                <i class="fa fa-comments"></i> <span>Post Manager</span>
+                <!-- <small class="label pull-right bg-red">3</small> -->
+            </a>
+        </li>
+        <li ng-show="currentUser.person_type == 'Admin'">
+            <a ui-sref="main.report">
+                <i class="fa fa-print"></i> <span>Reports</span>
+                <!-- <small class="label pull-right bg-red">3</small> -->
+            </a>
+        </li>
+       <!--  <li>
+            <a ui-sref="main.courses">
+                <i class="fa fa-calendar"></i> <span>Courses</span>
+            </a>
+        </li> -->
+
+        <!-- <li>
+            <a ui-sref="main.batches">
+                <i class="fa fa-calendar"></i> <span>Batches</span>
+            </a>
+        </li>
+        <li>
+            <a ui-sref="main.award">
+                <i class="fa fa-calendar"></i> <span>Awards</span>
+            </a>
+        </li> -->
+        <li>
+            <a ui-sref="main.useraccounts">
+                <i class="fa fa-users"></i> <span>User accounts</span>
+                <!-- <small class="label pull-right bg-red">3</small> -->
+            </a>
+        </li>
+        <li>
+            <a ui-sref="main.mailbox">
+                <i class="fa fa-envelope-o"></i> <span>Mailbox</span>
+                <!-- <small class="label pull-right bg-red">3</small> -->
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="">
+                <i class="fa fa-th"></i> <span>Configuration</span>
+                <span class="pull-right-container"><i class="fa fa-angle-down pull-right"></i></span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a ui-sref="main.courses">
+                        <i class="fa fa-book"></i> <span>Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="main.batches">
+                        <i class="fa fa-institution"></i> <span>Batches</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="main.award">
+                        <i class="fa fa-trophy"></i> <span>Awards</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="dashboard1"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                <li><a ui-sref="dashboard2"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            </ul>
+        </li> -->
+        <!--  <li class="treeview">
+            <a href="#">
+                <i class="fa fa-files-o"></i>
+                <span>Layout Options</span>
+                <span class="label label-primary pull-right">4</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+                <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            </ul>
+        </li>
+        <li>
+            <a ui-sref="widgets">
+                <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>Charts</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="morris"><i class="fa fa-circle-o"></i> Morris</a></li>
+                <li><a ui-sref="flot"><i class="fa fa-circle-o"></i> Flot</a></li>
+                <li><a ui-sref="inline"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                <li><a ui-sref="chartjs"><i class="fa fa-circle-o"></i> Chartjs</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>UI Elements</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="uigeneral"><i class="fa fa-circle-o"></i> General</a></li>
+                <li><a ui-sref="uiicons"><i class="fa fa-circle-o"></i> Icons</a></li>
+                <li><a ui-sref="uibuttons"><i class="fa fa-circle-o"></i> Buttons</a></li>
+                <li><a ui-sref="uisliders"><i class="fa fa-circle-o"></i> Sliders</a></li>
+                <li><a ui-sref="uitimeline"><i class="fa fa-circle-o"></i> Timeline</a></li>
+                <li><a ui-sref="uimodals"><i class="fa fa-circle-o"></i> Modals</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-edit"></i> <span>Forms</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
+                <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-table"></i> <span>Tables</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+                <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="pages/calendar.html">
+                <i class="fa fa-calendar"></i> <span>Calendar</span>
+                <small class="label pull-right bg-red">3</small>
+            </a>
+        </li>
+        <li>
+            <a href="pages/mailbox/mailbox.html">
+                <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                <small class="label pull-right bg-yellow">12</small>
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-folder"></i> <span>Examples</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+                <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+                <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+                <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+                <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+                <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+                <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-share"></i> <span>Multilevel</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                <li>
+                    <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                        <li>
+                            <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            </ul>
+        </li>
+        <li><a href="documentation/index.html"><i class="fa fa-book"></i> Documentation</a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li> -->
+    </ul>
+</section>
+<!-- /.sidebar -->
+<style type="text/css">
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background: #ffffff;
+     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.skin-blue .sidebar a {
+    color: #1c2833;
+}
+/*skin-blue .main-header .navbar .nav>li>a:hover {
+    color: #1c2833;
+}*/
+</style>
