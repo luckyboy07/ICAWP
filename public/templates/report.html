@@ -75,11 +75,11 @@
                             </button>
                             <div class="btn-group box-tools" uib-dropdown>
                                 <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
-                                    {{selectedYear}} <span class="caret"></span>
+                                    {{yearSelected}} <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-                                    <li role="menuitem" ng-click="getSelectedYear('All')"><a href="">All</a></li>
-                                    <li role="menuitem" ng-repeat="year in byYear" ng-click="getSelectedYear(year.year)"><a href="">{{year.year}}</a></li>
+                                    <li role="menuitem" ><a href="" ng-click="getyearSelected('All')">All</a></li>
+                                    <li role="menuitem" ng-repeat="year in byYear"><a href="" ng-click="getyearSelected(year.year)">{{year.year}}</a></li>
                                 </ul>
                             </div>
                         </div>

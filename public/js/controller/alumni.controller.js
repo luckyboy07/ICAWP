@@ -4,7 +4,7 @@
         .controller('alumniCtrl', alumniCtrl)
         .controller('exportCtrl', exportCtrl);
     alumniCtrl.$inject = ['$scope', '$state', 'APIFactory', '$filter', '$uibModal', 'toastr', 'ngTableParams'];
-    exportCtrl.$inject = ['$scope', '$state', '$uibModalInstance', 'years', 'jobs'];
+    exportCtrl.$inject = ['$scope', '$state', '$uibModalInstance', 'years', 'jobs', 'courses'];
 
     function alumniCtrl($scope, $state, APIFactory, $filter, $uibModal, toastr, ngTableParams) {
         console.log('alumniCtrl');
@@ -13,8 +13,16 @@
         $scope.alljobs = [];
         $scope.txtSearch = '';
         $scope.applicationStatus = 'All';
-
+        $scope.courses = [];
         $scope.display = false;
+        APIFactory.getAllcourse().then(function(data) {
+            if (data.statusCode == 200 && data.response.success) {
+                $scope.courses = data.response.result;
+                $scope.courses.unshift({
+                    name: 'All'
+                })
+            }
+        })
         var initialize = function() {
                 // async.waterfall([
                 //     function(callback) {
@@ -69,7 +77,8 @@
                                 _.each($scope.byYear, function(row) {
                                     row.years = parseInt(row.year);
                                 });
-                                console.log('$scope.txtSearch:', $scope.txtSearch);
+                                console.log('$scope.alumnis:', $scope.alumnis);
+                                $scope.accountalumni = _.filter($scope.alumnis, { 'Uaccount_status': 1 });
                                 if (_.isEmpty($scope.txtSearch)) {
                                     $scope.alumnis = $scope.alumnicopy;
                                 } else if (!_.isEmpty($scope.txtSearch)) {
@@ -230,9 +239,11 @@
 
 
         $scope.exportModal = function() {
+            console.log('diri', $scope.courses);
             $scope.years = [];
             $scope.years = $scope.byYear;
-
+            var list = [];
+            var listcopy = [];
             var modalInstance = $uibModal.open({
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
@@ -245,16 +256,28 @@
             };
 
             $scope.checkyear = function(value) {
-                $scope.display = true;
                 $scope.year = value;
                 $scope.list = []
                 $scope.schoolyear = (value - 1) + '-' + value;
-                $scope.list = _.filter($scope.alumnicopy, function(row) {
+                list = _.filter($scope.alumnicopy, function(row) {
                     return parseInt(row.year_graduate) == value;
                 });
-                console.log('$scope.list:', $scope.list);
+                listcopy = angular.copy(list);
+                console.log('list:', list);
             };
-
+            $scope.checkCourse = function(value) {
+                console.log('list:', list);
+                console.log('value:', value)
+                $scope.display = true;
+                if (value == 'All') {
+                    $scope.list = listcopy;
+                } else {
+                    $scope.list = _.filter(list, function(row) {
+                        return row.course.name == value;
+                    })
+                }
+                console.log('$scope.list:', $scope.list);
+            }
             $scope.printDiv = function() {
                 console.log('sample');
                 var printContents = document.getElementById('print').innerHTML;
@@ -265,6 +288,7 @@
 
             modalInstance.result.then(function(selectedItem) {}, function() {
                 console.info('Modal dismissed at: ' + new Date());
+                $scope.refresh();
             });
         };
 
@@ -275,13 +299,17 @@
         $scope.refresh();
     }
 
-    function exportCtrl($scope, $state, $uibModalInstance, years, jobs) {
-        console.log('asdasd')
+    function exportCtrl($scope, $state, $uibModalInstance, years, jobs, courses) {
+        console.log('asdasd', courses);
+        $scope.courses = courses;
         $scope.years = [];
         $scope.years = years;
         $scope.list = [];
         $scope.lastlist = [];
+        $scope.finalList = [];
+        $scope.lastlistcopy = [];
         $scope.displayyear = false;
+        $scope.displaycourse = false;
         _.each(years, function(row) {
             row.years = parseInt(row.year);
         });
@@ -289,6 +317,8 @@
             if (row.job_history.length > 0) {
                 row.latest_job = _.find(row.job_history, { 'current': 1, 'date_to': null });
                 row.last_job = _.find(row.job_history, { 'current': null }) || _.find(row.job_history, { 'current': 0 });
+            } else if (row.job_history && row.job_history.length == 0) {
+                row.status = 'last';
             }
             if (row.latest_job) {
                 row.status = 'latest';
@@ -303,15 +333,31 @@
         }
         $scope.report = function(value) {
             console.log('value:', value);
-            $scope.displaylist = true;
             $scope.displayyears = value;
+            $scope.displaycourse = true;
             if (value == 'Employed') {
                 $scope.lastlist = _.filter($scope.list, { 'status': 'latest' });
             } else {
                 $scope.lastlist = _.filter($scope.list, { 'status': 'last' });
             }
+            $scope.lastlist = _.uniqBy($scope.lastlist,'alumni_id');
+            $scope.lastlistcopy = angular.copy($scope.lastlist);
             console.log('$scope.lastlist:', $scope.lastlist);
-        }
+        };
+        $scope.reportCourse = function(value) {
+            $scope.displaylist = true;
+            if (value == 'All') {
+                $scope.finalList = $scope.lastlistcopy;
+            } else {
+                $scope.finalList = _.filter($scope.lastlist, function(row) {
+                    if (row.course) {
+                        return row.course.name == value;
+                    }
+                });
+            }
+            console.log('$scope.finalList:', $scope.finalList);
+        };
+
         $scope.checkyear = function(value) {
             console.log('value:', value);
             $scope.displayyear = true;
@@ -387,6 +433,9 @@
         //     newWin.print();
         //     newWin.close();
         // }
+        $scope.getCategory = function(value){
+            console.log('value:',value);
+        }
         $scope.printDiv = function() {
             console.log('sample');
             //     var divToPrint = document.getElementById("printTable");

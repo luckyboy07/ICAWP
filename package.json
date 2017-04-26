@@ -1,8 +1,7 @@
 {
-  "title": "Online Mindanao jobs",
-  "name": "Mindanaojobs",
+  "title": "ICAWP",
+  "name": "Initao College Alumni Web Portal",
   "version": "0.0.1",
-  "description": "On-line Mindanao jobs",
   "main": "index.js",
   "scripts": {
     "test": "mocha test",

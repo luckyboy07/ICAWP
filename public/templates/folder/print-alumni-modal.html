@@ -5,15 +5,16 @@
     <div class="box-body" style="padding-top: 20px;">
         <div class="form-group">
             <label class="col-sm-3 control-label">School Year</label>
-            <div class="col-sm-9" required>
+            <div class="col-sm-9">
                 <select class="form-control" ng-options="item.year as ((item.years -1)+'-'+ item.years) for item in years" ng-model="year" ng-change="checkyear(year)"></select>
-                <!--   <select class="form-control" name="selected" ng-model="value" ng-change="report(value)">
-                        <option value="" disabled>Please select</option>
-                        <option  ng-repeat="y in years" value="y">{{y.year}}</option>
-                    </select> -->
             </div>
         </div>
-      
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Select Course</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-options="item.name as item.name for item in courses" ng-model="course" ng-change="checkCourse(course)"></select>
+            </div>
+        </div>
         <div ng-if="display" id="print">
             <h3 ng-if="year" style="text-align: center;">School Year {{schoolyear}}</h3>
             <table ng-if="year" border="1" cellpadding="3" style=" font-family: arial, sans-serif;border-collapse: collapse;width: 100%;" id="printTable">
@@ -30,8 +31,8 @@
                     <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.address}}</td>
                     <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.contactnum}}</td>
                     <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.email_address}}</td>
-                    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" >{{item.course.name}}</td>
-                    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;" >{{item.year_graduate || 'None'}}</td>
+                    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.course.name}}</td>
+                    <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{item.year_graduate || 'None'}}</td>
                 </tr>
             </table>
         </div>

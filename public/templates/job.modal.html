@@ -46,9 +46,13 @@
                </option> -->
             </select>
         </div>
-         <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
             <label>Remarks* <small>(i.e Certification, licensure)</small></label>
             <input type="text" ng-model="selected.remarks" class="form-control" placeholder="Remarks" required />
+        </div>
+        <div class="form-group col-md-6">
+            <label>Salary</label>
+                <input type="text" ng-model="selected.salary" numbers-only class="form-control" placeholder="Salary" required />
         </div>
     </div>
     <div class="box-body">
@@ -63,11 +67,11 @@
         </div>
         <div class="form-group col-md-6">
             <label>Date from</label>
-            <input bs-datepicker ng-model="selected.date_from" data-date-format="MM-dd-yyyy" class="form-control" data-max-date="{{selected.date_to}}"/>
+            <input bs-datepicker ng-model="selected.date_from" data-date-format="MM-dd-yyyy" class="form-control" data-max-date="{{selected.date_to}}" />
         </div>
-         <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
             <label>Date to</label>
-            <input bs-datepicker ng-model="selected.date_to" data-date-format="MM-dd-yyyy" class="form-control" data-min-date="{{selected.date_from}}" ng-disabled="selected.current"/>
+            <input bs-datepicker ng-model="selected.date_to" data-date-format="MM-dd-yyyy" class="form-control" data-min-date="{{selected.date_from}}" ng-disabled="selected.current" />
         </div>
         <div class="form-group">
             <label>Description</label>

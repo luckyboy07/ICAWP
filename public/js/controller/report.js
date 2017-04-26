@@ -25,7 +25,7 @@
         $scope.lineCharts2.ykeys = ["Unemployed"];
         $scope.lineCharts2.labels = ['Employed'];
         $scope.lineCharts2.colors = ["#31C0BE"];
-        
+
         $scope.donut = {};
         $scope.donut.data = [];
 
@@ -34,6 +34,17 @@
         $scope.unemployedList = [];
         $scope.selectedYear = 'All';
         $scope.yearSelected = 'All';
+        $scope.courses = [];
+
+        APIFactory.getAllcourse().then(function(data) {
+            if (data.statusCode == 200 && data.response.success) {
+                $scope.courses = data.response.result;
+                $scope.courses.unshift({
+                    name: 'All'
+                })
+            }
+        })
+
         $scope.onClick = function() {
             var modalInstance = $uibModal.open({
                 ariaLabelledBy: 'modal-title',
@@ -61,7 +72,10 @@
         $scope.getyearSelected = function(value) {
             $scope.yearSelected = value;
             initializedata();
-        }
+        };
+        $scope.getyear = function(value) {
+            $scope.year = value;
+        };
         var initializedata = function() {
             APIFactory.getAllAlumni().then(function(data) {
                 if (data.statusCode = 200 && data.response.success) {
@@ -77,35 +91,41 @@
                         });
                     });
                     $scope.byYear = _.orderBy($scope.byYear, ['year'], ['asc']);
-                    console.log('$scope.byYear:', $scope.byYear);
                     $scope.alumnis = data.response.result;
+                    console.log('$scope.alumnis:', $scope.alumnis);
                     if ($scope.yearSelected == 'All') {
-                        _.each(data.response.result, function(row) {
-                            row.date_created = moment(row.date_created).format('YYYY-MM-DD');
-                            if (row.job_history && row.job_history.length > 0) {
-                                $scope.jobs.push(row.job_history);
-                            }
-                        });
+                        // _.each(data.response.result, function(row) {
+                        //     row.date_created = moment(row.date_created).format('YYYY-MM-DD');
+                        //     if (row.job_history && row.job_history.length > 0) {
+                        //         $scope.jobs.push(row.job_history);
+                        //     }
+                        // });
                         _.each(data.response.result, function(row) {
                             row.date = moment(row.date_created).format("YYYY");
-                            if (row.job_history && row.job_history.length == 0) {} else if (row.job_history && row.job_history.length > 0) {
-                                _.some(row.job_history, function(row2) {
-                                    if (row2.current == 1) {
-
-                                    } else {
-                                        unemployed.push(row);
-                                    }
-                                });
+                            if (row.job_history && row.job_history.length == 0) {
+                                unemployed.push(row);
+                            }
+                        });
+                        $scope.employee = _.filter(data.response.result, function(row) {
+                            if (row.job_history && row.job_history.length > 0) {
+                                return row;
                             }
                         });
                     } else {
                         var result = _.filter(data.response.result, { 'year_graduate': $scope.yearSelected });
                         console.log('result;', result);
+                        $scope.employee = _.filter(result, function(row) {
+                            if (row.job_history && row.job_history.length > 0) {
+                                return row;
+                            }
+                        });
                     }
+
+                    console.log(' $scope.employee:', $scope.employee);
+
                     $scope.alumnicopy = angular.copy(data.response.result);
 
                     $scope.unemployedList = _.uniqBy(unemployed, 'alumni_id');
-                    console.log('unemployed:', unemployed);
                     var uniqueDataUnemployed = _.groupBy($scope.unemployedList, 'year_graduate');
                     _.map(uniqueDataUnemployed, function(row, key) {
                         unemployeddesignate.push({
@@ -119,15 +139,8 @@
                         })
                     });
 
-                    $scope.jobs = _.flattenDeep($scope.jobs);
-                    $scope.employee = _.filter(data.response.result, function(row) {
-                        if (row.job_history && row.job_history.length > 0) {
-                            return _.some(row.job_history, function(row2) {
-                                return row2.current == 1;
-                            });
-                        }
-                    });
-                    console.log(' $scope.employee:', $scope.employee);
+                    // $scope.jobs = _.flattenDeep($scope.jobs);
+
                     var uniqueDataEmployed = _.groupBy($scope.employee, 'year_graduate');
                     console.log('uniqueDataEmployed:', uniqueDataEmployed);
                     _.map(uniqueDataEmployed, function(row, key) {
@@ -279,7 +292,7 @@
                     var sumNonRelate = Math.round((nocourserelated.length / job_employed.length) * 100, sumNonRelate, 0);
                     var sum = Math.round((totalrelated.length / job_employed.length) * 100, sum, 0);
                     console.log('sum:', sum);
-                    $scope.data1.push((sum.toString()+' %'));
+                    $scope.data1.push(sum.toString());
                     donut.push({
                         value: sum.toString(),
                         label: "Course Related Job"
@@ -316,6 +329,9 @@
                     },
                     jobs: function() {
                         return $scope.alumnicopy;
+                    },
+                    courses:function(){
+                        return $scope.courses;
                     }
                 }
             });
