@@ -1,3 +1,28 @@
+@font-face {
+    font-family: apletterlighter;
+    src: url("../css/fonts/austpost-font/APLETTER-LIGHT.ttf");
+}
+
+@font-face {
+    font-family: apletterbold;
+    src: url("../app/public/css/fonts/austpost-font/APLETTER-BOLD.ttf");
+}
+
+@font-face {
+    font-family: aplettermedium;
+    src: url("../app/public/css/fonts/austpost-font/APLETTER-MEDIUM.ttf");
+}
+
+@font-face {
+    font-family: apletterregular;
+    src: url("../app/public/css/fonts/austpost-font/APLETTER-REGULAR.ttf");
+}
+
+@font-face {
+    font-family: apletteritalic;
+    src: url("../app/public/css/fonts/austpost-font/APLETTER-REGULARITALIC.ttf");
+}
+
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 
 /*!
@@ -27,7 +52,8 @@ body {
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /*font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font-family: apletterlighter, sans-serif !important;
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto;
@@ -386,14 +412,17 @@ a:focus {
     margin-left: 40px;
 }
 
+
 /*.skin-blue .main-header .active a:first-of-type i {
     color: #d00000 !important;
     border-color: #d00000 !important;
 }*/
+
 .skin-blue .main-header .navbar .nav>li>a {
-   color:  !important;
+    color: !important;
     border-color: #d00000 !important;
 }
+
 .navbar-left {
     float: left!important;
 }

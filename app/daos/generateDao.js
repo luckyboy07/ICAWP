@@ -24,29 +24,30 @@ exports.generateUser = function(data, next) {
 
     async.waterfall([
         function(callback) {
-            var str = mysql.format('INSERT INTO useraccount(account_id,username,password,person_type) VALUES(?,?,?,?)', [data.account_id, newuser, newpass, person_type]);
+            var str = mysql.format('INSERT INTO useraccount(account_id,username,password,person_type) VALUES(?,?,?,?)', [data.account_id, data.student_id, newpass, person_type]);
             // db.insertWithId(str, next);
             console.log('str:');
             db.query(str, function(err, response) {
                 if (err) {
                     next(err, null);
                 }
-                callback(null,response);
+                callback(null, response);
             });
         },
-        function(account,callback) {
-            console.log('account;',account);
+        function(account, callback) {
+            console.log('account;', account);
             var strq = mysql.format('UPDATE Alumni SET Uaccount_status=1 WHERE alumni_id=?', [data.account_id]);
             console.log('strq:', strq);
             db.query(strq, function(err, response) {
                 if (err) {
                     next(err, null);
                 }
-                callback(null, account,response);
+                callback(null, account, response);
             });
-        },function(account,update,callback){
+        },
+        function(account, update, callback) {
             var strq = mysql.format('SELECT a.* from useraccount a WHERE account_id=?', [data.account_id]);
-             db.query(strq, function(err, response) {
+            db.query(strq, function(err, response) {
                 if (err) {
                     next(err, null);
                 }
@@ -56,7 +57,7 @@ exports.generateUser = function(data, next) {
     ], next)
 }
 exports.getUserById = function(id, next) {
-   db.query(mysql.format('SELECT a.* FROM useraccount a WHERE a.account_id =?', [id]), next);
+    db.query(mysql.format('SELECT a.* FROM useraccount a WHERE a.account_id =?', [id]), next);
 }
 exports.updateUser = function(user_id, data, next) {
     var str = mysql.format('UPDATE UserAccount SET username=?,password=?,person_type=? WHERE uc_id=?', [data.username, data.password,

@@ -10,8 +10,8 @@ var _ = require('lodash-node');
 var async = require('async');
 var fs = require('fs');
 exports.createAlumni = function(data, next) {
-    var str = mysql.format('INSERT INTO Alumni(firstname,middlename,lastname,gender,address,contactnum,email_address,course,month_graduated,year_graduate,civil,Uaccount_status,batch_name,nationality,gpa,achievement,birth_date)' +
-        'VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [data.firstname, data.middlename, data.lastname, data.gender, data.address,
+    var str = mysql.format('INSERT INTO Alumni(student_id,firstname,middlename,lastname,gender,address,contactnum,email_address,course,month_graduated,year_graduate,civil,Uaccount_status,batch_name,nationality,gpa,achievement,birth_date)' +
+        'VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [data.student_id, data.firstname, data.middlename, data.lastname, data.gender, data.address,
             data.contactnum, data.email_address, data.course, data.month_graduated, data.year_graduate, data.civil, data.Uaccount_status, data.batch_name, data.nationality, data.gpa,
             data.achievement, data.birth_date
         ]);
@@ -104,7 +104,7 @@ exports.deleteAlumni = function(id, next) {
 exports.updateAlumni = function(alumni_id, data, next) {
     async.waterfall([
         function(callback) {
-            var str = mysql.format('UPDATE Alumni SET firstname=?,middlename=?,lastname=?,gender=?,address=?,contactnum=?,email_address=?,course=?,month_graduated=?,year_graduate=?,civil=?,batch_name=?,nationality=?,gpa=?,achievement=?,birth_date=? WHERE alumni_id=?', [data.firstname, data.middlename, data.lastname, data.gender, data.address,
+            var str = mysql.format('UPDATE Alumni SET student_id=?,firstname=?,middlename=?,lastname=?,gender=?,address=?,contactnum=?,email_address=?,course=?,month_graduated=?,year_graduate=?,civil=?,batch_name=?,nationality=?,gpa=?,achievement=?,birth_date=? WHERE alumni_id=?', [data.student_id, data.firstname, data.middlename, data.lastname, data.gender, data.address,
                 data.contactnum, data.email_address, data.course, data.month_graduated, data.year_graduate, data.civil, data.batch_name, data.nationality, data.gpa, data.achievement, data.birth_date, alumni_id
             ]);
             db.actionQuery(str, function(err, response) {

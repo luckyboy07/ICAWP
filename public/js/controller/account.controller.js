@@ -15,7 +15,7 @@
                 if (data.statusCode == 200 && data.response.success) {
                     $scope.accounts = data.response.result;
                     $scope.accountscopy = angular.copy(data.response.result);
-                    console.log('$scope.accounts:',$scope.accounts);
+                    console.log('$scope.accounts:', $scope.accounts);
                 }
             });
         }
@@ -54,18 +54,24 @@
                 // $state.go($state.current, null, { reload: true });
             }
         }
-        $scope.generateUser = function(id) {
-            APIFactory.generateAlumniAccount({
-                account_id: id
-            }).then(function(data) {
-                if (data.statusCode == 200 && data.response.success) {
-                    toastr.success(data.response.msg, 'Success');
-                    console.log('data:', data.response);
-                    popupmodal(data.response.result);
-                    // var parseint = parseInt(data.response.result)
-                    // $state.go($state.current,null, { reload: true });
-                }
-            });
+        $scope.generateUser = function(student_id, id) {
+            console.log('student_id:', student_id);
+            console.log('id:', id);
+            if (!_.isEmpty(student_id)) {
+                APIFactory.generateAlumniAccount({
+                    student_id: student_id,
+                    account_id: id
+                }).then(function(data) {
+                    if (data.statusCode == 200 && data.response.success) {
+                        toastr.success(data.response.msg, 'Success');
+                        popupmodal(data.response.result);
+                        // var parseint = parseInt(data.response.result)
+                        // $state.go($state.current,null, { reload: true });
+                    }
+                });
+            }else{
+                toastr.error("Pease provide user's student id ",'Error');
+            }
         };
 
         $scope.searchData = function() {

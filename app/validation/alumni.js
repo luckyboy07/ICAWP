@@ -1,6 +1,7 @@
 'use strict';
 
 exports.validateAlumni = function(req, res, next) {
+    req.checkBody('student_id', 'Please provide your Student id').notEmpty();
     req.checkBody('lastname', 'Please provide your lastname').notEmpty();
     req.checkBody('middlename', 'Please provide your middle').notEmpty();
     req.checkBody('firstname', 'Please provide your firstname').notEmpty();
