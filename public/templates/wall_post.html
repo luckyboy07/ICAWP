@@ -504,7 +504,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <blockquote>
-                                            <p>{{post.post}}</p>
+                                            <p ng-bind-html="post.post | linky">{{post.post}}</p>
                                         </blockquote>
                                         <div class="" ng-if="post.category == 'Event'">
                                             <span><strong>Event Date: {{post.event_date | date:'longDate'}} </strong><i><!-- diri ibutang ang date sa event  --></i></span>
