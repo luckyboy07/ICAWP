@@ -155,7 +155,7 @@
             APIFactory.updateAlumni($scope.detail.alumni_id, $scope.detail).then(function(data) {
                 if (data.statusCode == 200 && data.response.success) {
                     toastr.success('Record successfully updated', 'Success');
-                    $state.go($state.current, null, { reload: true });
+                    // $state.go($state.current, null, { reload: true });
                 }
             })
         };

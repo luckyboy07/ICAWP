@@ -27,8 +27,8 @@
             'ui.materialize',
             'ngMdIcons'
         ])
-        .constant('API_URL', 'http://localhost:3000')
-        // .constant('API_URL', 'http://192.168.1.109:3001')
+        // .constant('API_URL', 'http://localhost:3000')
+        .constant('API_URL', 'http://192.168.254.104:3000')
         .constant('API_VERSION', '/api/1.0/')
         .config(['$urlRouterProvider', '$stateProvider', 'RestangularProvider', 'API_URL', 'API_VERSION', '$httpProvider', 'localStorageServiceProvider', 'ChartJsProvider',
             function($urlRouterProvider, $stateProvider, RestangularProvider, API_URL, API_VERSION, $httpProvider, localStorageServiceProvider, ChartJsProvider) {

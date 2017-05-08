@@ -49,7 +49,6 @@
         };
 
         $scope.addAlumni = function() {
-            console.log('$scope.detail:',$scope.detail);
             async.waterfall([
                 function(callback) {
                     if ($stateParams.id) {

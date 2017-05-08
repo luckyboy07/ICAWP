@@ -6,7 +6,7 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">School Year</label>
             <div class="col-sm-9">
-                <select class="form-control" ng-options="item.year as ((item.years -1)+'-'+ item.years) for item in years" ng-model="year" ng-change="checkyear(year)"></select>
+                <select class="form-control" ng-options="item.year as ((item.year -1)+'-'+ item.year) for item in years" ng-model="year" ng-change="checkyear(year)"></select>
             </div>
         </div>
         <div class="form-group">
@@ -15,9 +15,9 @@
                 <select class="form-control" ng-options="item.name as item.name for item in courses" ng-model="course" ng-change="checkCourse(course)"></select>
             </div>
         </div>
-        <div ng-if="display" id="print">
+        <div ng-show="display" id="printalumni">
             <h3 ng-if="year" style="text-align: center;">School Year {{schoolyear}}</h3>
-            <table ng-if="year" border="1" cellpadding="3" style=" font-family: arial, sans-serif;border-collapse: collapse;width: 100%;" id="printTable">
+            <table ng-if="year" border="1" cellpadding="3" style=" font-family: arial, sans-serif;border-collapse: collapse;width: 100%;margin:auto;" id="printTable">
                 <tr>
                     <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Name</th>
                     <th style=" border: 1px solid #dddddd;text-align: left; padding: 8px;">Address</th>
@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="printDiv()">OK</button>
+    <button class="btn btn-primary" type="button" ng-click="printAlumni('printalumni')">OK</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>
 <style type="text/css">

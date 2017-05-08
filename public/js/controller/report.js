@@ -1,4 +1,4 @@
-(function(document) {
+(function() {
     'use strict';
     angular.module('ICCP')
         .controller('reportCtrl', ['$scope', '$state', 'APIFactory', '$timeout', '$uibModal', reportCtrl])
@@ -80,6 +80,7 @@
             APIFactory.getAllAlumni().then(function(data) {
                 if (data.statusCode = 200 && data.response.success) {
                     var all = [];
+                    $scope.byYear = [];
                     var unemployed = [];
                     var unemployeddesignate = [];
                     var employeddesignate = [];
@@ -283,7 +284,7 @@
                         var sample = courserelated.length / employed.length;
                     });
                     totalrelated = _.flattenDeep(totalrelated);
-                    console.log('$scope.data1:', $scope.data1);
+                    console.log('totalrelated:', totalrelated);
                     nocourserelated = _.flattenDeep(nocourserelated);
                     console.log('nocourserelated:', nocourserelated);
                     console.log('job_employed:', job_employed);
@@ -291,6 +292,7 @@
                     nocourserelated = _.uniqBy(nocourserelated);
                     var sumNonRelate = Math.round((nocourserelated.length / job_employed.length) * 100, sumNonRelate, 0);
                     var sum = Math.round((totalrelated.length / job_employed.length) * 100, sum, 0);
+                    console.log('sumNonRelate:', sumNonRelate);
                     console.log('sum:', sum);
                     $scope.data1.push(sum.toString());
                     donut.push({
@@ -330,7 +332,7 @@
                     jobs: function() {
                         return $scope.alumnicopy;
                     },
-                    courses:function(){
+                    courses: function() {
                         return $scope.courses;
                     }
                 }
@@ -351,6 +353,62 @@
                     }
                 });
             }, 1000);
+        };
+
+          $scope.printAlumni = function() {
+            $scope.years = [];
+            console.log('diri', $scope.courses);
+            $scope.years = $scope.byYear;
+            console.log('dirssi', $scope.years);
+            var list = [];
+            var listcopy = [];
+            var modalInstance = $uibModal.open({
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                size: 'lg',
+                scope: $scope,
+                templateUrl: './public/templates/folder/print-alumni-modal.html'
+            });
+            $scope.cancel = function() {
+                modalInstance.dismiss('cancel');
+            };
+
+            $scope.checkyear = function(value) {
+                $scope.year = value;
+                $scope.list = []
+                $scope.schoolyear = (value - 1) + '-' + value;
+                list = _.filter($scope.alumnicopy, function(row) {
+                    return parseInt(row.year_graduate) == value;
+                });
+                listcopy = angular.copy(list);
+                console.log('list:', list);
+            };
+            $scope.checkCourse = function(value) {
+                console.log('list:', list);
+                console.log('value:', value)
+                $scope.display = true;
+                if (value == 'All') {
+                    $scope.list = listcopy;
+                } else {
+                    $scope.list = _.filter(list, function(row) {
+                        return row.course.name == value;
+                    })
+                }
+                console.log('$scope.list:', $scope.list);
+            }
+            $scope.printAlumni = function(name) {
+                console.log('sample:',name);
+                var printContents = document.getElementById('printalumni').innerHTML;
+                // var printContents = document.getElementById(name).innerHTML;
+                var popupWin = window.open("");
+                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+                popupWin.document.close();
+            };
+
+            modalInstance.result.then(function(selectedItem) {}, function() {
+                console.info('Modal dismissed at: ' + new Date());
+                $state.go($state.current,null,{reload:true});
+            });
         }
     }
 

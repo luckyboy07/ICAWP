@@ -77,14 +77,13 @@
                                 _.each($scope.byYear, function(row) {
                                     row.years = parseInt(row.year);
                                 });
-                                console.log('$scope.alumnis:', $scope.alumnis);
                                 $scope.accountalumni = _.filter($scope.alumnis, { 'Uaccount_status': 1 });
                                 if (_.isEmpty($scope.txtSearch)) {
                                     $scope.alumnis = $scope.alumnicopy;
                                 } else if (!_.isEmpty($scope.txtSearch)) {
                                     $scope.alumnis = $filter('filter')($scope.alumnicopy, $scope.txtSearch);
                                 }
-
+                                console.log('$scope.alumnis:', $scope.alumnis);
                                 params.total($scope.alumnis.length);
                                 var responsedata = $scope.alumnis.slice((params.page() - 1) * params.count(), params.page() * params.count());
                                 $defer.resolve(responsedata);
@@ -340,7 +339,7 @@
             } else {
                 $scope.lastlist = _.filter($scope.list, { 'status': 'last' });
             }
-            $scope.lastlist = _.uniqBy($scope.lastlist,'alumni_id');
+            $scope.lastlist = _.uniqBy($scope.lastlist, 'alumni_id');
             $scope.lastlistcopy = angular.copy($scope.lastlist);
             console.log('$scope.lastlist:', $scope.lastlist);
         };
@@ -363,16 +362,25 @@
             $scope.displayyear = true;
             $scope.year = value;
             $scope.schoolyear = (value - 1) + '-' + value;
-            var list = []
-            $scope.list = _.filter(jobs, function(row) {
-                return parseInt(row.year_graduate) == value;
-            });
-            _.each($scope.list, function(row) {
-                if (row.last_job) {
-                    row.last_job.experience = dateDiff(row.last_job.date_from, row.last_job.date_to);
-                }
-            });
+            if ($scope.selectedCat == 'Summary') {
+                $scope.numberofalumni = _.filter($scope.alumnicopy, function(row) {
+                    return parseInt(row.year_graduate) == value;
+                });
+                $scope.numberofemploye = _.filter($scope.numberofalumni, { 'status': 'latest' });
+                $scope.numberofunemploye = _.filter($scope.numberofalumni, { 'status': 'last' });
+
+            } else {
+                $scope.list = _.filter(jobs, function(row) {
+                    return parseInt(row.year_graduate) == value;
+                });
+                _.each($scope.list, function(row) {
+                    if (row.last_job) {
+                        row.last_job.experience = dateDiff(row.last_job.date_from, row.last_job.date_to);
+                    }
+                });
+            }
         };
+
         var formatString = function(format) {
             var pieces = format.split('.'),
                 year = parseInt(pieces[0]),
@@ -433,18 +441,28 @@
         //     newWin.print();
         //     newWin.close();
         // }
-        $scope.getCategory = function(value){
-            console.log('value:',value);
+        $scope.getCategory = function(value) {
+            console.log('value:', value);
+            $scope.selectedCat = value;
+            $scope.year = null;
+            $scope.schoolyear = null;
+            $scope.finalList = [];
+            $scope.displayyears = false;
+            $scope.displaycourse = false;
+            $scope.displaylist = false;
+            $scope.displayyear = false;
         }
         $scope.printDiv = function() {
-            console.log('sample');
             //     var divToPrint = document.getElementById("printTable");
             //     var newWin = window.open("");
             //     newWin.document.write(divToPrint.outerHTML);
             //     newWin.print();
             //     newWin.close();
-
-            var printContents = document.getElementById('print').innerHTML;
+            if ($scope.selectedCat == 'Detail') {
+                var printContents = document.getElementById('print').innerHTML;
+            } else {
+                var printContents = document.getElementById('printsum').innerHTML;
+            }
             var popupWin = window.open("");
             popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
             popupWin.document.close();

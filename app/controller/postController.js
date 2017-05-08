@@ -15,7 +15,7 @@ Posts.prototype.createPost = function(data, next) {
         if (!err) {
             next(null, {
                 success: true,
-                msg: 'Record Successfully Created',
+                msg: 'Post Successfully Created',
                 result: returnedData
             });
         } else {

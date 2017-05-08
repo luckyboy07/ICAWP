@@ -7,7 +7,7 @@
             <div class="small-box bg-aqua">
                 <div class="inner">
                     <h3>{{alumnis.length}}</h3>
-                    <p>Registered Alumni</p>
+                    <p>Total number of Alumni</p>
                 </div>
                 <div class="icon">
                     <i class="ion-ios-person"></i>
@@ -20,7 +20,7 @@
             <div class="small-box bg-aqua" ui-sref="main.useraccounts">
                 <div class="inner">
                     <h3>{{accountalumni.length}}</h3>
-                    <p>Registered Alumni Account</p>
+                    <p>Total number of Registered Alumni Account</p>
                 </div>
                 <div class="icon">
                     <i class="ion-ios-person"></i>
@@ -31,7 +31,7 @@
         <div class="col-sm-12">
             <div class="card" >
                 <div class="card-header" data-background-color="inverse">
-                    <h4 class="title">List of Aumni</h4>
+                    <h4 class="title">List of Alumni</h4>
                 </div>
                 <!-- <div class="card-content padding p-0"> -->
                 
@@ -46,9 +46,9 @@
                                 <a ng-click="refresh()" class="md-button md-raised btn-sm btn-success">
                                     <i class="fa fa-refresh"></i> Refresh
                                 </a>
-                                <a ng-click="exportModal()" class="md-button md-raised btn-sm btn-success">
+                               <!--  <a ng-click="exportModal()" class="md-button md-raised btn-sm btn-success">
                                     <i class="fa fa-table"></i> Print List
-                                </a>
+                                </a> -->
                             </div>
                         </form>
                     </div>
@@ -99,6 +99,7 @@
                                 {{alumni.year_graduate}}
                             </td>
                         </tr>
+                       
                         <!--  <thead>
                             <tr>
                                 <th>Firstname</th>

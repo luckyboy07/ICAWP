@@ -273,23 +273,32 @@
         };
 
         $scope.getCategorypost = function(value) {
+            console.log('value==>', value);
             _.each($scope.categorypost, function(row) {
                 if (row.name !== value.name) {
                     row.checked = false;
                 }
             });
-            if (user.person_type == 'Alumni') {
-                if (value.name == 'Only me') {
-                    $scope.allpostcopy = $scope.onlyme;
-                } else if (value.name == 'View all') {
-                    $scope.allpostcopy = $scope.recentpost;
-                } else {
-                    $scope.allpostcopy = _.filter($scope.recentpost, { 'category': value.name });
-                }
-                $scope.filtercat = angular.copy($scope.allpostcopy);
+            if (value.name == 'Only me') {
+                $scope.allpostcopy = $scope.onlyme;
+            } else if (value.name == 'View all') {
+                $scope.allpostcopy = $scope.recentpost;
             } else {
-
+                $scope.allpostcopy = _.filter($scope.recentpost, { 'category': value.name });
             }
+            $scope.filtercat = angular.copy($scope.allpostcopy);
+            // if (user.person_type == 'Alumni') {
+            //     if (value.name == 'Only me') {
+            //         $scope.allpostcopy = $scope.onlyme;
+            //     } else if (value.name == 'View all') {
+            //         $scope.allpostcopy = $scope.recentpost;
+            //     } else {
+            //         $scope.allpostcopy = _.filter($scope.recentpost, { 'category': value.name });
+            //     }
+            //     $scope.filtercat = angular.copy($scope.allpostcopy);
+            // } else {
+
+            // }
         };
 
         // var initialize = function() 
@@ -390,7 +399,7 @@
                                         $scope.allpost = data.response.result;
                                         $scope.allpostcopy = angular.copy(data.response.result);
                                         $scope.recentpost = angular.copy(data.response.result);
-                                        $scope.onlyme = _.filter(data.response.result, { 'approved': 1, 'account_id': user.uc_id, });
+                                        $scope.onlyme = _.filter(data.response.result, { 'name':'Admin'});
                                         // if (_.isEmpty($scope.txtSearch)) {
                                         //     $scope.allpost = $scope.allpostcopy;
                                         // } else if (!_.isEmpty($scope.txtSearch)) {

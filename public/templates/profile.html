@@ -50,33 +50,33 @@
                                 <div class="box-body">
                                     <form name="alumniform" ng-submit="editProfile()">
                                         <div class="col-sm-6">
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Firstname</label>
                                                 <input type="text" ng-model="detail.firstname" class="form-control" disabled placeholder="Firstname" />
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Middlename</label>
                                                 <input type="text" ng-model="detail.middlename" class="form-control" disabled placeholder="Middlename" />
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Lastname</label>
                                                 <input type="text" ng-model="detail.lastname" class="form-control" disabled placeholder="Lastname" />
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Gender</label>
                                                 <input type="text" class="form-control" ng-model="detail.gender" disabled placeholder="Gender">
                                             </div>
-                                            <div class="form-group ">
-                                                <label>Contact Number</label>
-                                                <input type="text" ng-model="detail.contactnum" class="form-control" placeholder="Contact Number" numbers-only />
-                                            </div>
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Nationality</label>
                                                 <input type="text" ng-model="detail.nationality" class="form-control" placeholder="Nationality" disabled />
                                             </div>
+                                            <div class="form-group">
+                                                <label>Contact Number</label>
+                                                <input type="text" ng-model="detail.contactnum" class="form-control" placeholder="Contact Number" numbers-only />
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Date of Birth</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" ng-model="detail.birth_date" data-date-format="MM-dd-yyyy" bs-datepicker placeholder="MM/DD/YYYY" disabled />
@@ -85,43 +85,43 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group ">
-                                                <label>Email Address</label>
-                                                <input type="text" ng-model="detail.email_address" class="form-control" placeholder="Email Address" required />
+                                            <div class="form-group">
+                                                <label>Home Address</label>
+                                                <input type="text" ng-model="detail.address" class="form-control" placeholder="Address" disabled />
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Course Graduated</label>
                                                 <input type="text" class="form-control" ng-model="detail.account_course.name" disabled placeholder="Course">
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <div class="form-group ">
+                                                    <div class="form-group">
                                                         <label>Month Graduated</label>
                                                         <input type="text" class="form-control" ng-model="detail.month_graduated" disabled placeholder="Year Graduated">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <div class="form-group ">
+                                                    <div class="form-group">
                                                         <label>Year Graduated</label>
                                                         <input type="text" class="form-control" ng-model="detail.year_graduate" disabled placeholder="Year Graduated">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group col-md-6">
+                                            <!-- <div class="form-groupcol-md-6">
                             <label>Year Graduated</label>
                             <input type="text" ng-model="detail.year_graduate" class="form-control" placeholder="Year Graduated" numbers-only required />
                         </div> -->
-                                            <div class="form-group ">
+                                            <div class="form-group">
                                                 <label>Civil Status</label>
                                                 <input type="text" class="form-control" ng-model="detail.civil" disabled placeholder="Civil">
                                             </div>
-                                            <!-- <div class="form-group col-md-6">
+                                            <!-- <div class="form-groupcol-md-6">
                             <label>Civil Status</label>
                             <input type="text" ng-model="detail.civil" class="form-control" placeholder="Civil" required />
                         </div> -->
-                                            <div class="form-group ">
-                                                <label>Home Address</label>
-                                                <input type="text" ng-model="detail.address" class="form-control" placeholder="Address" disabled />
+                                            <div class="form-group">
+                                                <label>Email Address</label>
+                                                <input type="text" ng-model="detail.email_address" class="form-control" placeholder="Email Address" required />
                                             </div>
                                         </div>
                                         <div class="form-group col-md-3 pull-right">
@@ -161,7 +161,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                  <!--   <div ng-if="job.length == 0">
+                                    <!--   <div ng-if="job.length == 0">
                                         NO JOB POSTED YET
                                     </div> -->
                                 </div>
@@ -177,7 +177,7 @@
                                     <div class="form-group col-md-6">
                                         <label></label>
                                         <button type="submit" class="md-button md-raised md-primary btn btn-primary btn-flat btn-block" ng-click="updateUsername()">
-                                            Update
+                                            Update username
                                         </button>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                                     <div class="form-group col-md-6">
                                         <label></label>
                                         <button type="submit" class="md-button md-raised md-primary btn btn-primary btn-flat btn-block" ng-click="updatePassword(newpassword)">
-                                            Update
+                                            Update password
                                         </button>
                                     </div>
                                 </div>

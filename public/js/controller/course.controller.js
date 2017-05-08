@@ -67,7 +67,6 @@
                     APIFactory.saveCourse($scope.detail).then(function(data) {
                         if (data.statusCode == 200 && data.response.success) {
                             toastr.success('Record successfully created', 'Success');
-                            $scope.refresh();
                             modalInstance.dismiss();
                         } else if (data.statusCode = 400 && !data.response.success) {
                             _.each(data.response.result, function(row) {
@@ -80,6 +79,7 @@
 
             modalInstance.result.then(function(selectedItem) {}, function() {
                 console.info('Modal dismissed at: ' + new Date());
+                $scope.refresh();
             });
         };
         $scope.getDetail = function(id) {
