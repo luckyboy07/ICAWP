@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test",
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "license": "ISC",
   "dependencies": {
@@ -13,6 +14,7 @@
     "async": "^1.5.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
+    "bower": "^1.8.0",
     "bunyan": "^1.5.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",

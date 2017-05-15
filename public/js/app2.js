@@ -26,8 +26,8 @@
             'ngTable'
 
         ])
-        .constant('API_URL', 'http://localhost:3000')
-        // .constant('API_URL', 'http://192.168.1.109:3001')
+        // .constant('API_URL', 'http://localhost:3000')
+        .constant('API_URL', 'http://192.168.8.100:3000')
         .constant('API_VERSION', '/api/1.0/')
         .config(['$urlRouterProvider', '$stateProvider', 'RestangularProvider', 'API_URL', 'API_VERSION', '$httpProvider',
             function($urlRouterProvider, $stateProvider, RestangularProvider, API_URL, API_VERSION, $httpProvider) {

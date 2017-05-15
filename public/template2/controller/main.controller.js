@@ -19,7 +19,7 @@
                     $scope.events = _.filter(data.response.result, { 'category': 'Event' });
                     $scope.news = _.filter(data.response.result, { 'category': 'News' });
                     $scope.jobs = _.filter(data.response.result, { 'category': 'Job Hiring' });
-                    console.log('$scope.jobs:', $scope.jobs);
+                    console.log('$scope.events:', $scope.events);
                     // $scope.allpostcopy = angular.copy(data.response.result);
                     // console.log('data.response.result:', data);
                     console.log('$scope.allpost:', $scope.allpost);

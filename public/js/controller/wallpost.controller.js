@@ -415,6 +415,7 @@
                                         } else if (_.isEmpty($scope.txtSearch) && $scope.filtervalue == 'All') {
                                             $scope.allpost = data.response.result;
                                         }
+                                        console.log('allpost:',$scope.allpost);
                                         // if (_.isEmpty($scope.txtSearch) && _.isEmpty($scope.filtercopy)) {
                                         //     $scope.allpost = $scope.allpostcopy;
                                         // } else if (!_.isEmpty($scope.txtSearch) && _.isEmpty($scope.filtercopy)) {
